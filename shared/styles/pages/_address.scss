@@ -1,0 +1,114 @@
+%ship-btn {
+    margin: 10px 0;
+    width: 200px;
+    background: #F2CB6B;
+    border-radius: 2px;
+    font-weight: $font-weight--normal;
+    text-transform: none;
+}
+
+%line-bottom {
+    height: 20px;
+    margin-bottom: -18px;
+    background: -moz-linear-gradient(top, #ddd, #f7f7f7 3px, white);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddd), color-stop(3px, #f7f7f7), color-stop(100%, white));
+    background: -webkit-linear-gradient(top, #ddd, #f7f7f7 3px, white);
+    background: -o-linear-gradient(top, #ddd, #f7f7f7 3px, white);
+    background: -ms-linear-gradient(top, #ddd, #f7f7f7 3px, white);
+    background: linear-gradient(top, #ddd, #f7f7f7 3px, white);
+    filter: none;
+    z-index: 0;
+    zoom: 1;
+    &:after {
+        display: block;
+        width: 100%;
+        height: 20px;
+        background-color: transparent;
+        background: -moz-linear-gradient(left, white, rgba(255, 255, 255, 0), white);
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(50%, rgba(255, 255, 255, 0)), color-stop(100%, white));
+        background: -webkit-linear-gradient(left, white, rgba(255, 255, 255, 0), white);
+        background: -o-linear-gradient(left, white, rgba(255, 255, 255, 0), white);
+        background: -ms-linear-gradient(left, white, rgba(255, 255, 255, 0), white);
+        background: linear-gradient(left, white, rgba(255, 255, 255, 0), white);
+        filter: none;
+        z-index: 1;
+        content: "";
+    }
+}
+
+.Address {
+    border-top: 1px solid $divider-color;
+    .single-ad {
+        .single-ad-main {
+            padding-left: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 14px;
+            & > * {
+                display: block;
+            }
+            .name {
+                font-size: 20px;
+                font-weight: $font-weight--semi-bold;
+                padding: 5px 0;
+                @extend %resetHeaders;
+            }
+            .address,
+            .state,
+            .phone {
+                font-size: 14px;
+            }
+            .shipBtn {
+                @extend %ship-btn;
+            }
+            .edit-address {
+                .mdl-button {
+                    margin-right: 10px;
+                    width: 95px;
+                    text-transform: Capitalize;
+                    &:hover {
+                        background: $color-primary--contrast__active;
+                    }
+                    &:last-of-type {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+        .single-ad-after {
+            .single-ad-after-inner {
+                @extend %line-bottom;
+            }
+        }
+    }
+    .diffShip {
+        padding: 20px;
+        .header {
+            h3 {
+                font-size: 20px;
+                font-weight: $font-weight--semi-bold;
+                @extend %resetHeaders;
+            }
+        }
+        .ad-form {
+        	position: relative;
+            .form-control {
+                padding: 10px;
+                .input-ctrl {
+                    position: relative;
+                    padding: 10px 0;
+                    width: 500px;
+                    .mdl-textfield__label {
+                        top: 14px;
+                        &:after {
+                            bottom: 10px;
+                        }
+                    }
+                }
+            }
+            .altship {
+            	@extend %ship-btn;
+            	margin-left: 250px;
+            }
+        }
+    }
+}

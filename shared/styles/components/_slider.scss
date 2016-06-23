@@ -1,0 +1,125 @@
+    .Slider {
+        
+        position: relative;
+        .SlideContainer {
+            height: inherit;
+            .sliderFrame {
+                height: 100%;
+                & > * {
+                    height: 100%;
+                    transition: all 3s ease;
+                }
+            }
+            .sliderControls {
+                width: 100%;
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                background: transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .ctrl {
+                    float: left;
+                    margin-right: 15px;
+                    width: 12px;
+                    height: 12px;
+                    background: #F1F2F3;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition: background .35s ease;
+                    &:hover {
+                        background: $color-primary--contrast__active;
+                    }
+                    &.active {
+                        background: $color-primary;
+                    }
+                    &:last-of-type {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+    //sam brown
+    .ImageSlider {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        display: inline-block;
+        transition: all ease .5s;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        background: transparent;
+
+        .ImageSlide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            @extend %clearfix;
+            //height: 100%;
+            //display: flex;
+            .img {
+                float: left;
+                background-size: contain;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+        }
+        &:hover {
+            .slide-btn {
+                display: block;
+            }
+        }
+        .slide-btn {
+            position: absolute;
+            top: 40%;
+            z-index: 1000;
+            //background: darken(#dcdcdc, 10%);
+            display: none;
+            transition: all .5s ease;
+            cursor: pointer;
+            width: 64px;
+            height: 64px;
+            &.prev {
+                left: 0;
+            }
+            &.next {
+                right: 0;
+            }
+        }
+    }
+    
+    .ImageSliderOverlay {
+        .ReactModal__Content--after-open {
+            border: none !important;
+            border-radius: 0 !important;
+            background: #000 !important;
+        }
+        .ReactModal__Content {
+            .material-icons {
+                top: 50%;
+                right: 50%;
+            }
+            .close-btn {
+                color: #FFFFFF;
+                position: absolute;
+                border-radius: 0;
+                top: 0px !important;
+                right: 0px !important;
+                width: 36px;
+                height: 36px;
+                cursor: pointer;
+                z-index: 8040;
+                background: rgba(0, 0, 0, .7);
+                cursor: pointer;
+                font-size: 1.2em !important;
+                padding-left: 3px;
+                padding-top: 2px;
+                & > * {
+                	z-index: 8040;
+                }
+            }
+        }
+    }

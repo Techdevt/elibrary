@@ -1,0 +1,142 @@
+.List {
+	background: #fafafa;
+	min-height: calc(100vh - 64px);
+    .Delegates__ActionBar {
+    	background: $color-primary;
+    	position: relative;
+        height: 64px;
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, .35);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, .35);
+        .Delegates__ActionBar_inner {
+            .Delegates__ActionBar_right {
+                position: absolute;
+                right: 100px;
+                top: 30px;
+            }
+        }
+    }
+
+    .List__container {
+    	padding: 40px;
+    	width: 100%;
+    	.List__actions {
+    		.filter {
+    			display: inline-block;
+    			float: right;
+    			position: relative;
+    			margin-top: 20px;
+    			color: $text-color--secondary;
+    		}
+
+    	}
+        .labelHeader {
+            padding: 0;
+            .item {
+                span{
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $text-color--secondary;
+                    text-rendering: optimizeLegibility;
+                    margin-left: 10px;
+                }
+            }
+        }
+ 		.List__Item {
+ 			position: relative;
+ 			padding: 5px;
+ 			transition: all .1s ease-in;
+ 			border-top: 2px solid lighten($color-primary--contrast__active, 15%);
+ 			cursor: pointer;
+ 		
+ 			&:hover {
+ 				background: $white;
+ 			}
+ 			&:last-child {
+ 				border-bottom: 2px solid lighten($color-primary--contrast__active, 15%);
+ 			}
+ 		
+ 			.List__Item_subcontainer {
+ 				display: inline-block;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+ 				&:last-child {
+ 					margin-right: 0;
+ 				}
+ 				.List__Item_avatar {
+ 					display: inline-block;
+ 					width: 50px;
+ 					height: 50px;
+ 					border-radius: 50%;
+                    &.icon {
+                        color: #fff;
+                        background: $text-color--secondary;
+                        //background: #2A80BA;
+                        padding-top: 12px;
+                        padding-left: 12px;
+                        margin-right: 5px;
+                        transition: all .2s ease;
+                    }
+ 				}
+                
+ 				.List__Item_name, .List__Item_email {
+ 					font-size: 16px;
+ 					font-weight: 600;
+ 					color: $text-color--secondary;
+ 					text-rendering: optimizeLegibility;
+ 					line-height: 48px;
+                    &.readOnly {
+                            input {
+                                font-weight: 600;
+                                color: $text-color--secondary;
+                                font-size: 15px;
+                                border: none;
+                                text-rendering: optimizeLegibility;
+                            }
+                    }
+ 				}
+
+ 				.List__Item_active {
+                    padding-top: 10px;
+                    display: inline-block;
+ 					.circle {
+ 						width: 10px;
+					    height: 10px;
+					    display: inline-block;
+					    border-radius: 5px;
+					    &.active {
+					    	background: lighten(green, 10%);
+					    }
+					    &.inactive{
+					    	background: lighten(yellow, 10%);
+					    }
+ 					}
+ 				}
+ 				& > * {
+ 					padding-left: 10px;
+ 					float: left;
+ 					&:last-child {
+ 						float: none;
+ 					}
+ 				}
+
+ 				&.List__Item_actions {
+ 					display: inline-block;
+ 		            .inner {
+                        float: right;
+                        & > * {
+                            margin-right: 10px;
+                            &:last-child {
+                                padding-right: 0;
+                            }
+                        }
+
+                        .mdl-button {
+                            color: $text-color--secondary;
+                        }
+                    }	
+ 				}
+ 			}
+ 		}
+    }
+}

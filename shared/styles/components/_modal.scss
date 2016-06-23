@@ -1,0 +1,176 @@
+.Category .mdl-layout__header-row {
+    padding: 0;
+    .mdl-layout-spacer {
+        display: none;
+    }
+    .confirmTitle {
+        color: #FFF;
+        display: inline-block;
+        margin: 0 auto;
+    }
+}
+
+.mdl-textfield {
+    font-family: $font-family--primary;
+}
+
+.ReactModalPortal > * {
+    opacity: 0;
+}
+
+.ReactModal__Overlay {
+    transition: opacity .2s ease-in-out;
+    background: rgba(0, 0, 0, .35) !important;
+    &--after-open {
+        opacity: 1;
+    }
+    &--before-close {
+        opacity: 0;
+    }
+    .mdl-layout__header {
+        .mdl-layout__header-row {
+            .confirmTitle {
+                color: $white;
+            }
+        }
+    }
+}
+
+.example {
+    background: black;
+}
+
+.example-enter {
+    opacity: 0.01;
+    background: black;
+}
+
+.example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+    opacity: 1;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.modal-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8020;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    vertical-align: top;
+}
+
+.modal-skin {
+    position: relative;
+    background: #f9f9f9;
+    color: #444;
+    text-shadow: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 15px;
+    width: auto;
+    height: auto;
+    margin: 0;
+    border: 0;
+    outline: none;
+    vertical-align: top;
+}
+
+.modal-outer {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    vertical-align: top;
+}
+
+.modal-inner {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    vertical-align: top;
+    overflow: hidden;
+    h3 {
+        color: #EE3268;
+        font-size: 2rem;
+        font-weight: 200;
+    }
+    h6 {
+        color: #00B8BB;
+        font-size: 1rem;
+        font-weight: 200;
+    }
+    span {
+        color: #EE3268;
+    }
+}
+
+.modal-close {
+    position: fixed !important;
+    color: $white;
+    border-radius: 50%;
+    border: 2px solid $white;
+    top: -18px !important;
+    right: -18px !important;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 8040;
+    background: #1B1818;
+    position: fixed;
+    cursor: pointer;
+    font-size: 1.2em !important;
+    padding-left: 3px;
+    padding-top: 2px;
+}
+
+.slider {
+    position: relative;
+    @extend %clearfix;
+    &:hover {
+        .slide-btn {
+            display: block;
+        }
+    }
+    .slide-btn {
+        position: absolute;
+        width: 38px;
+        height: 38px;
+        top: 40%;
+        z-index: 1000;
+        display: none;
+        transition: all .5s ease;
+        &.prev {
+            left: 0;
+        }
+        &.next {
+            right: 0;
+        }
+    }
+    .slide {
+        width: 100%;
+        float: left;
+        margin-right: -100%;
+        position: relative;
+        opacity: 1;
+        display: block;
+        z-index: 2;
+        img {
+          width: 100%;
+          max-height: 280px;
+        }
+    }
+}

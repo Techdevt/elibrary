@@ -1,0 +1,14 @@
+#application secrets(passwords)
+config/secrets.json
+
+#npm modules
+node_modules/
+
+#git
+.git/
+
+#build
+dist/
+
+#uploads
+#server/uploads/

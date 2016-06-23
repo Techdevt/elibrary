@@ -1,0 +1,65 @@
+.button {
+    font-size: 16px;
+    height: 52px;
+    line-height: 48px;
+    padding: 0 32px;
+    &.cta {
+        margin-top: 30px;
+    }
+    &.inverse {
+        opacity: 0.88;
+        border-color: $white;
+        color: $white;
+    }
+}
+
+.btn {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    padding: 0.625rem 1.5625rem;
+    font-family: $font-family--primary;
+    margin-bottom: 0.3125rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 0.3125rem;
+    border-width: 0rem;
+    cursor: pointer;
+    line-height: 1;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    @include media('<60rem') {
+        font-size: 12px;
+    }
+}
+
+.book {
+    margin-bottom: 30px;
+    border: 0.0625rem solid #c3c3c3;
+    background: $white;
+    border-radius: 5px;
+    font-family: $font-family--primary;
+    color: $text-color--primary;
+    font-weight: $font-weight--semi-bold;
+    text-transform: capitalize;
+    font-size: 16px;
+    width: auto;
+}

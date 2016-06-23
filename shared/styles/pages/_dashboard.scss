@@ -1,0 +1,6 @@
+.Dashboard {
+	min-height: calc(100vh - 64px);
+	@include media('<=1024px') {
+		min-height: calc(100vh - 56px);
+	}
+}

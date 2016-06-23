@@ -1,0 +1,32 @@
+.success-icon, .failure-icon {
+	position: relative !important;
+	color: $white;
+	padding: 6px;
+	border-radius: 50%;
+	right: inherit !important;
+	top: inherit !important;
+	margin: 0 auto;
+	font-size: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    left: 35%;
+    bottom: 10px;
+}
+.success-icon {
+    background: green;
+}
+.failure-icon {
+    background: red;
+}
+
+.success-icon.is-animating {
+	-webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+	transform: scale(1.5);
+}
+
+.EditDelegate {
+    min-height: calc(100vh - 64px) !important;
+}
