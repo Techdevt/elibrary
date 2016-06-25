@@ -1,6 +1,9 @@
+
 bake in code splitting
+set up linting
+open sans
+make sure webpack builds the minimum file size
 create new theme
-move mainlayout to routes.jsx
 rewrite auth reducer when rewriting user system
 create multi-tenant system
 	school registration

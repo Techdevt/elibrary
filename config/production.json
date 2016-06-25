@@ -1,3 +1,34 @@
 {
-	
+    "app": {
+        "title": "Eworm",
+        "description": "All the modern best practices in one example.",
+        "head": {
+          "titleTemplate": "Eworm: %s",
+          "meta": [
+            {"name": "description", "content": "Elibrary Application"},
+            {"charset": "utf-8"},
+            {"property": "og:site_name", "content": "Eworm"},
+            {"property": "og:image", "content": ""},
+            {"property": "og:locale", "content": "en_US"},
+            {"property": "og:title", "content": "Eworm"},
+            {"property": "og:description", "content": "Elibrary Application"}
+          ]
+        }
+    },
+    "host": "http://127.0.0.1",
+    "port": "8000",
+    "dbBase": "mongodb://127.0.0.1",
+    "dbConnectionString": "mongodb://127.0.0.1/eworm",
+    "smtp": {
+        "from": {
+            "name": "Unimart",
+            "address": "fanky5g@gmail.com"
+        },
+        "credentials": {
+            "user": "fanky5g@gmail.com",
+           	"host": "smtp.gmail.com",
+            "ssl": true
+        }
+    },
+    "requireAccountVerification": true
 }

@@ -88,14 +88,14 @@ module.exports = {
             minChunks: Infinity,
             filename: 'vendor.bundle.js'
         }),
+        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             },
             output: {
                 comments: false
-            },
-            sourceMap: false
+            }
         }),
         new ExtractTextPlugin('style.css', {
             allChunks: true

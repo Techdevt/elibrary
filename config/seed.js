@@ -1,5 +1,6 @@
 'use strict';
 var secrets = require('./index.js').secrets;
+
 module.exports = function seedDatabase(conn) {
     var User = require('../server/models/user').default(conn);
     var Admin = require('../server/models/admin').default(conn);

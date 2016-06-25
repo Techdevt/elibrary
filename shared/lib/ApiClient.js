@@ -5,8 +5,9 @@ const methods = ['get', 'post', 'put', 'patch', 'delete'];
 function formatUrl(path) {
     const adjustedPath = path[0] !== '/' ? '/' + path : path;
     if (!process.env.BROWSER) {
+        const config = JSON.parse(process.env.CONFIG);
         // Prepend host and port of the API server to the path.
-        return 'http://' + process.env.PORT + ':' + process.env.HOST + adjustedPath;
+        return 'http://' + process.env.config.host + ':' + process.env.config.port + adjustedPath;
     }
     // Prepend `/api` to relative URL, to proxy to API server.
     return adjustedPath;

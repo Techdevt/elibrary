@@ -25,7 +25,7 @@ const BABEL_QUERY = {
 
 export default function(app) {
     const config = Object.assign(prodCfg, {
-        devtool: 'inline-source-map',
+        devtool: 'eval',
         entry: {
             bundle: [
                 'webpack-hot-middleware/client',
@@ -70,8 +70,7 @@ export default function(app) {
                 "process.env": {
                     BROWSER: JSON.stringify(true),
                     NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-                    HOST: JSON.stringify(appConfig.host),
-                    PORT: JSON.stringify(appConfig.port)
+                    CONFIG: JSON.stringify(appConfig)
                 }
             }),
             new webpack.optimize.OccurenceOrderPlugin(),

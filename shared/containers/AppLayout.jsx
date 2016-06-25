@@ -1,18 +1,19 @@
- import React, { Component, PropTypes } from 'react';
- import MainLayout from 'components/MainLayout';
+ import React from 'react';
+ import MainLayout from 'containers/MainLayout';
 
-export default class AppLayout extends React.Component {
-  render() {
-  	const { user, notify, menu, dispatch, Auth } = this.props;
-  	//this is where basic structure shud live
-    
-    return (
-	    <MainLayout
-	        showFooter={true} style={{height: '100%'}} notify={notify} menu={menu} dispatch={dispatch} Auth={Auth}>
-	        {this.props.children && React.cloneElement(this.props.children, {
+class AppLayout extends React.Component {
+    render() {
+       const {user, notify, menu, dispatch, Account} = this.props;
+       
+       return (
+        <MainLayout
+          showFooter={true} style={{height: '100%'}} notify={notify} menu={menu} dispatch={dispatch} Account={Account}>
+          {this.props.children && React.cloneElement(this.props.children, {
               user
           })}
-	    </MainLayout>
-    );
-  }
+      </MainLayout>
+      );
+    }
 }
+
+export default AppLayout;

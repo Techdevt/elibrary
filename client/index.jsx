@@ -1,9 +1,9 @@
 import React       from 'react';
 import { render }  from 'react-dom';
-import routes      from 'routes';
+import createRoutes  from 'routes';
 import { Provider } from 'react-redux';
 import immutifyState from 'lib/immutifyState';
-import createStore from 'lib/redux/create';
+import createStore from 'common/store/create';
 import ApiClient   from 'lib/ApiClient';
 import { Router, browserHistory, match } from 'react-router';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
@@ -13,7 +13,8 @@ const initialState = immutifyState(window.__INITIAL_STATE__);
 
 const client = new ApiClient();
 const history = useScroll(() => browserHistory)();
-const store = createStore(history, client, initialState);
+const store = createStore(client, initialState);
+const routes = createRoutes(store);
 
 const { dispatch } = store;
 const { pathname, search, hash } = window.location;
@@ -50,7 +51,7 @@ browserHistory.listen(location => {
 });
 
 Promise.prototype.finally = function(onResolveOrReject) {
-  return this.catch(function(reason){
+  return this.catch(function(reason) {
     return reason;
   }).then(onResolveOrReject);
 };

@@ -4,7 +4,6 @@ import {Link} from 'react-router';
 import DashBar from 'components/DashBar';
 import User from 'components/DashBarUser';
 import { connect } from 'react-redux';
-import { provideHooks } from 'redial';
 
 export default class DashLayout extends Component {
     static contextTypes = {
@@ -28,6 +27,7 @@ export default class DashLayout extends Component {
             {to: '/dashboard/settings', name: 'Settings', allow: ['merchant', 'delegate', 'shopper', 'admin'], icon: "settings"},
             {to: '/dashboard/users', name: 'Users', allow: ['admin'], icon: "event"}
         ];
+
         const links = navLinks.filter(function(link) {
             return link.allow.indexOf(type) !== -1;
         });
@@ -44,13 +44,14 @@ export default class DashLayout extends Component {
         const { user, type, notify, dispatch } = this.props;
         const passedAvatar = user.roles[type].avatarUrl[1];
         const fullName = `${user.roles[type].firstName} ${user.roles[type].lastName}`;
+        const companyName = user.roles[type].companyName;
         const links = this.generateLinks();
 
         const currentRoute =  this.props.routes[this.props.routes.length-1];
         return (
-            <div style={{minHeight: '100%',height: '100%',position: 'relative'}} className="Dashboard">
+            <div style={{minHeight: '100%',height: '100%',position: 'relative'}}>
                 <Layout fixedHeader fixedDrawer>
-                    <DashBar title={currentRoute.name} goToUrl={this.goToUrl} type={type} messageCount={unreadCount}/>
+                    <DashBar title={currentRoute.name} goToUrl={this.goToUrl} type={type}/>
                     <Drawer onClick={this.toggleDrawer}>
                         <Header className="Drawer__Header">
                             <User className="Drawer__Header_avatar" passedAvatar={passedAvatar}/>
@@ -60,12 +61,7 @@ export default class DashLayout extends Component {
                             {
                                 links.map(function(link, index) {
                                     return(
-                                        <Link to={link.to} key={index} activeClassName="active">
-                                                <span>
-                                                    {link.name}
-                                                </span>
-                                                <Icon name={link.icon} className="link-icon"/>
-                                            </Link>
+                                        <Link to={link.to} key={index} activeClassName="active">{link.name}<Icon name={link.icon} className="link-icon"/></Link>
                                     );
                                 })
                             }

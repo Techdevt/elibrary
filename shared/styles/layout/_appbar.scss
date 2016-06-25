@@ -9,7 +9,7 @@
         }
     }
     z-index: 1000;
-    background: #fff;
+    background: #222222;
     min-height: 2.9375rem;
     border-bottom: .0625rem solid #ededed;
     width: 100%;
@@ -43,10 +43,10 @@
         & > * {
             float: left;
         }
-        svg.icon-gnaas {
-            width: 139px;
-            height: 32px;
-            margin-top: 15px;
+        .icon-logo {
+            width: 164px;
+            height: 46px;
+            margin-top: 10px;
         }
         @include media('<=850px') {
             margin: 0 auto;

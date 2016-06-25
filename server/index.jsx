@@ -1,5 +1,4 @@
 import express                   from 'express';
-import favicon                   from 'serve-favicon';
 import path                      from 'path';
 import bodyParser                from 'body-parser';
 import morgan                    from 'morgan';
@@ -17,15 +16,13 @@ import React                     from 'react';
 import { renderToString }        from 'react-dom/server';
 import { RouterContext, match }  from 'react-router';
 import createHistory             from 'react-router/lib/createMemoryHistory';
-import routes                    from 'routes';
+import createRoutes              from 'routes';
 import { Provider }              from 'react-redux';
 import ApiClient                 from 'lib/ApiClient';
-import createStore               from 'lib/redux/create';
+import createStore               from 'common/store/create';
 import { trigger }               from 'redial';
 import Html                      from 'lib/Html';
-require('babel-polyfill');
-// import Agenda                    from 'agenda';
-// import Jobs                      from './config/background-jobs';
+
 const app = express();
  
 if (process.env.NODE_ENV !== 'production') {
@@ -48,7 +45,6 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-app.use(favicon('client/favicon.ico'));
 app.use(express.static('client'));
 app.use(express.static('server/uploads'));
 app.use(express.static('dist'));
@@ -120,7 +116,6 @@ app.use((req, res) => {
                 isAuthenticated: true,
                 authSuccess: false,
                 token: req.session.token,
-                bannerLoading: false
             }));
           }
         });
@@ -133,8 +128,7 @@ app.use((req, res) => {
             message: '',
             isAuthenticated: false,
             authSuccess: false,
-            token: null,
-            bannerLoading: false
+            token: null
           }));
       }
     });
@@ -148,15 +142,21 @@ app.use((req, res) => {
       renderToString(<Html store={store}/>));
   }
 
-  getLoggedUser().then(function(Auth) {
-    const store = createStore(history, client, {Auth: Auth});
-    const location = req.url;
+  getLoggedUser().then(function(Account) {
 
+    const store = createStore(client, { Account: Account, SourceRequest: {
+      protocol: req.headers['x-forwarded-proto'] || req.protocol,
+      host: req.headers.host
+    }});
+
+    const location = req.url;
+    const routes = createRoutes(store);
+    
       //hack for System.import
-      
-      if (typeof System.import === 'undefined') {
-        System.import = (path) => Promise.resolve((require(path)));
-      }
+
+      // if (typeof System.import === 'undefined') {
+      //   System.import = (path) => Promise.resolve((require(path)));
+      // }
 
       match({ history, routes, location }, (error, redirectLocation, renderProps) => {
         if (redirectLocation) {
@@ -180,12 +180,13 @@ app.use((req, res) => {
          trigger('fetch', components, locals)
             .then(() => {
               const initialState = store.getState();
+              
               const component = (
                 <Provider store={store}>
                   <RouterContext {...renderProps} />
                 </Provider>
               );
-
+              
               res.status(200);
 
               global.navigator = {userAgent: req.headers['user-agent']};

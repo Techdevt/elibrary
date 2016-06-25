@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Helmet from "react-helmet";
 import { connect } from 'react-redux';
-import NotificationComponent from 'components/NotificationComponent';
+import NotificationComponent from 'common/components/NotificationComponent';
 import classNames from 'classnames';
+import AppLayout from 'containers/AppLayout';
 
 if(process.env.BROWSER) {
   require('react-mdl/extra/material');
@@ -84,41 +85,43 @@ class AppView extends Component {
 
   render() {
   	//this is where basic structure shud live
-    const { user, menu, dispatch, Auth } = this.props;
+    const { user, menu, dispatch, Account } = this.props;
     const { message, dismissTimeout, label, active } = this.state;
     const currentRoute =  this.props.routes[this.props.routes.length-1];
-
+    
     return (
       <div id="app-view" className={classNames({[`${currentRoute.name}page`]: true})}>
-        <Helmet title={`IPSF2017 - ${currentRoute.name}` } />
+        <Helmet title={`${currentRoute.name} - Eworm` } />
         {
-          active &&
-          <NotificationComponent 
-          message={ message }
-          active={ active }
-          styles={ this.getNotificationStyles() } 
-          label={ label }
-          dismissTimeout={ dismissTimeout }
-          action={ this.action }/>
+            active &&
+            <NotificationComponent 
+            message={ message }
+            active={ active }
+            styles={ this.getNotificationStyles() } 
+            label={ label }
+            dismissTimeout={ dismissTimeout }
+            action={ this.action }/>
         }
-        {
-          React.cloneElement(this.props.children, {
-            notify: this.notify,
-            user,
-            menu,
-            dispatch,
-            Auth
-          })
-        }
+        <AppLayout user={user} notify={this.notify} menu={menu} dispatch={dispatch} Account={Account}>
+          {
+            React.cloneElement(this.props.children, {
+              notify: this.notify,
+              user,
+              menu,
+              dispatch,
+              Account
+            })
+          }
+        </AppLayout>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-   user: state.Auth.toJSON().user,
-   menu: state.menu.toJSON(),
-   Auth: state.Auth
+   user: state.Account.toJSON().user,
+   menu: state.Menu.toJSON(),
+   Account: state.Account
 });
 
 export default connect(mapStateToProps)(AppView);
