@@ -4,8 +4,8 @@
   "description": "An Isomorphic Elibrary Application",
   "main": "index.js",
   "engines": {
-    "node": "5.4.1",
-    "npm": "3.3.12"
+    "node": ">=5.4.1",
+    "npm": ">=3.3.12"
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
