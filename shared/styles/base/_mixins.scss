@@ -50,24 +50,49 @@ $end-colour) {
     end-colourStr='#{$end-colour}');
 }
 
-@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
-  // For Google Chrome
-  ::-webkit-scrollbar {
-      width:  $size;
-      height: $size;
-  }
+@mixin scrollbars($size,
+$foreground-color,
+$background-color: mix($foreground-color, white, 50%)) {
+    // For Google Chrome
+    ::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+    ::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+    // For Internet Explorer
+    body {
+        scrollbar-face-color: $foreground-color;
+        scrollbar-track-color: $background-color;
+    }
+}
 
-  ::-webkit-scrollbar-thumb {
-      background: $foreground-color;
-  }
-
-  ::-webkit-scrollbar-track {
-      background: $background-color;
-  }
-
-  // For Internet Explorer
-  body {
-    scrollbar-face-color: $foreground-color;
-    scrollbar-track-color: $background-color;
-  }
+@mixin sticky-footer($footer-height,
+$wrapper-selector: unquote("#wrapper"),
+$container-selector: unquote("#container"),
+$footer-selector: unquote("#footer")) {
+    html,
+    body {
+        height: 100%;
+    }
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+    #{$wrapper-selector} {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        margin-bottom: -$footer-height;
+        #{$container-selector} {
+            padding: 0 0 $footer-height 0;
+        }
+    }
+    #{$footer-selector} {
+        height: $footer-height;
+    }
 }

@@ -8,10 +8,12 @@ import ApiClient   from 'lib/ApiClient';
 import { Router, browserHistory, match } from 'react-router';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 import { trigger } from 'redial';
+import AppLoading  from 'lib/appLoading';
 
 const initialState = immutifyState(window.__INITIAL_STATE__);
 
 const client = new ApiClient();
+const _AppLoading = new AppLoading();
 const history = useScroll(() => browserHistory)();
 const store = createStore(client, initialState);
 const routes = createRoutes(store);
@@ -30,6 +32,8 @@ match({ routes, location }, () => {
 });
 
 browserHistory.listen(location => {
+  //dispatch route changing //pageTransitioning
+  // _AppLoading.start();
   match({ routes, location }, (error, redirectLocation, renderProps) => {
     const { components } = renderProps;
     const locals = {
@@ -41,6 +45,8 @@ browserHistory.listen(location => {
         store
       };
 
+    //dispatch route changed: pageTransitioning false
+    // _AppLoading.stop();
     if (window.__INITIAL_STATE__) {
       delete window.__INITIAL_STATE__;
     } else {
