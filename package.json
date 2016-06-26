@@ -8,8 +8,8 @@
     "npm": ">=3.3.12"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
-    "test:coverage": "./node_modules/.bin/babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
+    "test": "./node_modules/.bin/babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
+    "test:coverage": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
     "test:watch": "npm run test -- --watch",
     "utest": "set NODE_PATH=./shared&&mocha --require . --recursive",
     "wstart": "set NODE_ENV=production&& set NODE_PATH=./shared&& pm2 start index.js --node-args='--harmony'",
@@ -17,8 +17,7 @@
     "wbuild": "set NODE_ENV=production&& webpack --progress --color -p --config webpack.prod.config.js",
     "lstart": "NODE_ENV=production NODE_PATH=$NODE_PATH:./shared pm2 start index.js --node-args='--harmony'",
     "ldev": "NODE_PATH=$NODE_PATH:./shared node --harmony .",
-    "lbuild": "NODE_ENV=production webpack --progress --color -p --config webpack.prod.config.js",
-    "cover": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive"
+    "lbuild": "NODE_ENV=production webpack --progress --color -p --config webpack.prod.config.js"
   },
   "repository": {
     "type": "git",
