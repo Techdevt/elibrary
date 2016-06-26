@@ -15,3 +15,6 @@ dist/
 
 #uploads
 #server/uploads/
+
+#coverage
+coverage
