@@ -6,7 +6,7 @@ import Link from 'react-router/lib/Link';
 export default class footer extends Component {
 	render() {
         return (
-		    <footer className="section section-footer">
+		    <footer className="section section-footer" id="footer">
 	            <div className="container">
 	            	<section className="section-content">
 	            		<div className="container">

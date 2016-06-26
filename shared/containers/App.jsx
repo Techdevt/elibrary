@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import NotificationComponent from 'common/components/NotificationComponent';
 import classNames from 'classnames';
 import AppLayout from 'containers/AppLayout';
+import Footer        from 'common/components/Footer';
 
 if(process.env.BROWSER) {
   require('react-mdl/extra/material');
@@ -113,6 +114,7 @@ class AppView extends Component {
             })
           }
         </AppLayout>
+        <Footer />
       </div>
     );
   }

@@ -45,7 +45,7 @@ export default class MainLayout extends Component {
         const { notify, menu, Account } = this.props;
 
         return (
-            <Layout fixedHeader style={{minHeight: '100%',height:"auto", position: 'relative'}} id="main">
+            <Layout fixedHeader style={{minHeight: '100%',height:"auto", position: 'relative', marginBottom: '-165px'}} id="main">
                 <Header className="header">
                     <HeaderRow className="container">
                       <Link to="/" className="brand">
@@ -87,12 +87,13 @@ export default class MainLayout extends Component {
                             <MenuComponent links={menu.links} caption={menu.caption} toggleMenu={this.onClickMenu}></MenuComponent>
                         }
                     </TransitionGroup>
-                    { 
-                        this.props.children && React.cloneElement(this.props.children, {
-                            notify
-                        })
-                    }
-                     <Footer />
+                    <div >
+                        {
+                            this.props.children && React.cloneElement(this.props.children, {
+                                notify
+                            })
+                        }
+                    </div>
                 </div>
             </Layout>
         );
