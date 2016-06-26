@@ -14,7 +14,7 @@ before_install:
   - node --version | grep -q 'v0.8' && npm install -g npm@3.3.12 || true
 
 node_js:
-  - "5.4.0"
+  - "5.4.1"
 
 notifications:
   email: false
