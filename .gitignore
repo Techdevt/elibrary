@@ -1,6 +1,9 @@
 #application secrets(passwords)
 config/secrets.json
 
+#Job spec
+job.md
+
 #npm modules
 node_modules/
 
