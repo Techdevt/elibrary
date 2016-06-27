@@ -1,18 +1,20 @@
-import React       from 'react';
-import { render }  from 'react-dom';
-import createRoutes  from 'routes';
-import { Provider } from 'react-redux';
-import immutifyState from 'lib/immutifyState';
-import createStore from 'common/store/create';
-import ApiClient   from 'lib/ApiClient';
-import { Router, browserHistory, match } from 'react-router';
-import useScroll from 'scroll-behavior/lib/useStandardScroll';
-import { trigger } from 'redial';
-import AppLoading  from 'lib/appLoading';
+import React          from 'react';
+import { render }     from 'react-dom';
+import createRoutes   from 'routes';
+import { Provider }   from 'react-redux';
+import immutifyState  from 'lib/immutifyState';
+import createStore    from 'common/store/create';
+import ApiClient      from 'lib/ApiClient';
+import Router         from 'react-router/lib/Router';
+import browserHistory from 'react-router/lib/browserHistory';
+import match          from 'react-router/lib/match';
+import useScroll      from 'scroll-behavior/lib/useStandardScroll';
+import { trigger }    from 'redial';
+// import AppLoading     from 'lib/appLoading';
 
 const initialState = immutifyState(window.__INITIAL_STATE__);
 
-const client = new ApiClient();
+// const client = new ApiClient();
 const _AppLoading = new AppLoading();
 const history = useScroll(() => browserHistory)();
 const store = createStore(client, initialState);

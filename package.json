@@ -8,8 +8,8 @@
     "npm": ">=3.3.12"
   },
   "scripts": {
-    "test": "./node_modules/.bin/babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
-    "test:coverage": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
+    "test": "npm run test:coverage",
+    "test:coverage": "./node_modules/.bin/babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
     "test:watch": "npm run test -- --watch",
     "utest": "set NODE_PATH=./shared&&mocha --require . --recursive",
     "wstart": "set NODE_ENV=production&& set NODE_PATH=./shared&& pm2 start index.js --node-args='--harmony'",
@@ -104,6 +104,7 @@
     "path": "^0.12.7",
     "pretty-error": "^2.0.0",
     "promise-defer": "^1.0.0",
+    "q": "^1.4.1",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-addons-transition-group": "^15.1.0",

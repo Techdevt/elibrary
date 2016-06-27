@@ -5,6 +5,7 @@
 * setup travis ci(continuous integration)
 * set up code coverage
 * open sans
+* test page without javascript
 * make sure webpack builds the minimum file size
 * create user system
 * create new theme

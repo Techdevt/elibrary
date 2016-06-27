@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {Layout, Header, Navigation, Drawer, Content, Textfield, IconButton, Icon} from 'react-mdl';
-import {Link} from 'react-router';
+import Link from 'react-router/lib/Link';
 import DashBar from 'components/DashBar';
 import User from 'components/DashBarUser';
 import { connect } from 'react-redux';
