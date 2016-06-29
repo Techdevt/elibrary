@@ -1,0 +1,17 @@
+{
+    "school": {
+        "can": ["publish"],
+        "inherits": ["lecturer"]
+    },
+    "faculty": {
+        "can": ["publish"],
+        "inherits": ["lecturer"]
+    },
+    "lecturer": {
+        "can": ["write"],
+        "inherits": ["student"]
+    },
+    "student": {
+        "can": ["read"]
+    }
+}

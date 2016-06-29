@@ -50,6 +50,13 @@ describe('RoleManager', function() {
         });
     });
 
+    it("restricts access to unqualified users", (done) => {
+        _RoleManager.can("school", "dance").catch(err => {
+        	expect(err).to.equal(false);
+            done();
+        })
+    });
+
     describe("roles with nested params", function() {
         it("setRoles(): sets roles accepts objects with nested tests", () => {
             let stub = sinon.stub();

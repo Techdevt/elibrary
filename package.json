@@ -8,7 +8,8 @@
     "npm": ">=3.3.12"
   },
   "scripts": {
-    "test": "npm run test:coverage",
+    "test": "NODE_PATH=$NODE_PATH:./shared npm run test:coverage",
+    "wtest": "set NODE_PATH=./shared&& npm run test:coverage",
     "test:coverage": "./node_modules/.bin/babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
     "test:watch": "npm run test -- --watch",
     "utest": "set NODE_PATH=./shared&&mocha --require . --recursive",
@@ -66,6 +67,7 @@
     "sass-loader": "^3.1.2",
     "sinon": "^1.17.4",
     "style-loader": "^0.13.0",
+    "supertest": "^1.2.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",

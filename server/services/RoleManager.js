@@ -70,7 +70,10 @@ export default class RoleManager {
                 callback(undefined, result);
             };
 
-            const reject = (err) => {
+            const reject = (err = false) => {
+                if(typeOf(err) === "object") {
+                    err = false;
+                }
                 rejectPromise(err);
                 callback(err);
             };
@@ -84,7 +87,7 @@ export default class RoleManager {
             }
 
             if (!this[_roles][role]) {
-                return false;
+                return reject(false);
             }
 
             let $role = this[_roles][role];
@@ -121,11 +124,7 @@ export default class RoleManager {
                 });
             }
 
-            if (!$role.inherits && $role.inherits.length < 1) {
-                return false;
-            }
-
-            reject(false);
+            return reject(false);
         });
     };
 }
