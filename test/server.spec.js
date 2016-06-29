@@ -25,4 +25,12 @@ describe('loading express', function() {
             .expect(404, done);
     });
 
+    describe('database connections', function() {
+        this.timeout(20000);
+        it('passes requests of top level domain to default database', () => {
+
+        });
+    });
+
+    // it('passes requests of subdomains to client databases', )
 });
