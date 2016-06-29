@@ -81,7 +81,7 @@ describe('Auth Middleware', function() {
     	});
 
     	it('blocks unauthorized users from accessing an endpoint', (done) => {
-    		return serialize(user, (err, token) => {
+    		serialize(user, (err, token) => {
     			request(server)
     			.get('/books')
     			.set('Authorization', `Bearer ${token}`)
@@ -90,7 +90,7 @@ describe('Auth Middleware', function() {
     	});
 
     	it('allows authorized users to access route', (done) => {
-    		return serialize(university, (err, token) => {
+    		serialize(university, (err, token) => {
     			request(server)
     			.get('/books')
     			.set('Authorization', `Bearer ${token}`)

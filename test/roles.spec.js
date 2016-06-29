@@ -34,7 +34,7 @@ describe('RoleManager', function() {
         it('accepts only JSON objects', () => {
             expect(_RoleManager.setRoles).to.not.be.undefined;
             const testArray = [];
-            expect(_RoleManager.setRoles.bind(testArray)).to.throw('roles should be a JSON object');
+            expect(_RoleManager.setRoles.bind(this, testArray)).to.throw('roles should be a JSON object');
         });
 
         it('successfully sets roles', () => {
