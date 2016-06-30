@@ -14,8 +14,8 @@ import { trigger }    from 'redial';
 
 const initialState = immutifyState(window.__INITIAL_STATE__);
 
-// const client = new ApiClient();
-const _AppLoading = new AppLoading();
+const client = new ApiClient();
+// const _AppLoading = new AppLoading();
 const history = useScroll(() => browserHistory)();
 const store = createStore(client, initialState);
 const routes = createRoutes(store);

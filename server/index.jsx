@@ -8,7 +8,7 @@ import { v4 }                    from 'uuid';
 import jwt                       from 'jsonwebtoken';
 import session                   from 'express-session';
 import sessionStore              from 'connect-mongo';
-import { Map }                from 'immutable';
+import { Map }                   from 'immutable';
 import mongoose                  from 'mongoose';
 import seedData                  from '../config/seed';
 import { config, secrets }       from '../config';
