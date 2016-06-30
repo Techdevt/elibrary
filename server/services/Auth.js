@@ -53,7 +53,7 @@ export function deserialize(token, callback) {
 
 export function extractHeaderToken(headers) {
     let token;
-    if (headers.authorization) {
+    if (headers.authorization && headers.authorization !== "") {
         token = headers.authorization.split(" ")[1];
     }
     return token || null;
