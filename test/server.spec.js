@@ -1,5 +1,6 @@
 import { makeServer } from './test_server';
 import request from 'supertest';
+import { expect } from 'chai';
 
 describe('loading express', function() {
     let server;
@@ -28,7 +29,12 @@ describe('loading express', function() {
     describe('database connections', function() {
         this.timeout(20000);
         it('passes requests of top level domain to default database', () => {
-
+            request(server)
+                .get('/test/dbconn')
+                .expect(200)
+                .end(function(err, res) {
+                    expect(res.body).to.deep.equal({database: 'eworm'});
+                });
         });
     });
 

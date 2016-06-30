@@ -18,7 +18,7 @@
     "host": "http://127.0.0.1",
     "port": "8000",
     "dbBase": "mongodb://127.0.0.1",
-    "dbConnectionString": "mongodb://127.0.0.1/eworm",
+    "dbName": "eworm",
     "smtp": {
         "from": {
             "name": "Unimart",

@@ -22,6 +22,7 @@ import ApiClient                 from 'lib/ApiClient';
 import createStore               from 'common/store/create';
 import { trigger }               from 'redial';
 import Html                      from 'lib/Html';
+import { initDb, getDb }         from './helpers/database';
 
 const app = express();
  
@@ -54,15 +55,14 @@ app.set('jwtsecret', secrets["app:secret"]);
 global.appRoot = path.resolve(__dirname);
 
 //connect to mongodb
-let conn = mongoose.createConnection(config.dbConnectionString);
+let conn = initDb();
 app.use((req, res, next) => {
 	const domain = req.hostname;
   if(domain.indexOf('127.0.0.1') === -1) {
       const subDomains = domain.split('.');
       //seed default database
       if(subDomains.length > 2) {
-        const uri = `${config.dbBase}/${subDomains[0]}`;
-        conn = mongoose.createConnection(uri);
+        conn = initDb(subDomain[0]);
       }
   }
   next();
@@ -83,7 +83,7 @@ app.use(session({
   genid: function() {
     return v4()
   },
-  store: new MongoStore({ mongooseConnection: conn }),
+  store: new MongoStore({ mongooseConnection: getDb() }),
   resave: true,
   saveUninitialized : false,
   unset: 'destroy',

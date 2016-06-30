@@ -10,7 +10,7 @@
   "scripts": {
     "test": "NODE_PATH=$NODE_PATH:./shared npm run test:coverage",
     "wtest": "set NODE_PATH=./shared&& npm run test:coverage",
-    "test:coverage": "./node_modules/.bin/babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive",
+    "test:coverage": "./node_modules/.bin/babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --require ./test/test_helper.js --bail --recursive test/**/**.spec.js",
     "test:watch": "npm run test -- --watch",
     "utest": "set NODE_PATH=./shared&&mocha --require . --recursive",
     "wstart": "set NODE_ENV=production&& set NODE_PATH=./shared&& pm2 start index.js --node-args='--harmony'",
