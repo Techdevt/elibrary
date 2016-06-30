@@ -14,7 +14,6 @@ try {
         "superAdmin:password": process.env.ADMIN_PASSWORD,
         "app:secret": process.env.SECRET_KEY
     };
-    console.log(secrets);
 }
 
 module.exports = {
