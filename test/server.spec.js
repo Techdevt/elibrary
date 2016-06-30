@@ -1,6 +1,8 @@
 import { makeServer } from './test_server';
 import request from 'supertest';
 import { expect } from 'chai';
+import _request from 'axios';
+import { config } from '../config';
 
 describe('loading express', function() {
     let server;
@@ -28,15 +30,25 @@ describe('loading express', function() {
 
     describe('database connections', function() {
         this.timeout(20000);
-        it('passes requests of top level domain to default database', () => {
-            request(server)
-                .get('/test/dbconn')
-                .expect(200)
-                .end(function(err, res) {
-                    expect(res.body).to.deep.equal({database: 'eworm'});
+        it('passes requests of top level domain to default database', (done) => {
+            const defaultDb = 'eworm';
+            _request
+                .get(`http://eworm.com:${config.port}/test/dbconn`)
+                .then((res) => {
+                    expect(res.data).to.deep.equal({ database: defaultDb });
+                    done();
+                });
+        });
+
+        it('passes requests of subdomains to client databases', (done) => {
+            const domain = 'knust';
+            _request
+                .get(`http://${domain}.eworm.com:${config.port}/test/dbconn`)
+                .then((res) => {
+                    expect(res.data).to.deep.equal({ database: domain });
+                    done();
                 });
         });
     });
 
-    // it('passes requests of subdomains to client databases', )
 });

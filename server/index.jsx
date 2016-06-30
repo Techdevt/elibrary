@@ -62,7 +62,7 @@ app.use((req, res, next) => {
       const subDomains = domain.split('.');
       //seed default database
       if(subDomains.length > 2) {
-        conn = initDb(subDomain[0]);
+        conn = initDb(subDomains[0]);
       }
   }
   next();
