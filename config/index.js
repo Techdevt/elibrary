@@ -10,9 +10,9 @@ try {
     console.log("see config/secrets-sample.json for an example");
     console.log("resetting to environment variables");
     secrets = {
-        "smtp:password": process.env["smtp:password"],
-        "superAdmin:password": process.env["superAdmin:password"],
-        "app:secret": process.env["app:secret"]
+        "smtp:password": process.env.SMTP_PASSWORD,
+        "superAdmin:password": process.env.ADMIN_PASSWORD,
+        "app:secret": process.env.SECRET_KEY
     };
     console.log(secrets);
 }
