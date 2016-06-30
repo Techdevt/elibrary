@@ -12,12 +12,13 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
+script:
+  - export SECRET_KEY=$SECRET_KEY
+  - export SMTP_PASSWORD=$SMTP_PASSWORD
+  - export ADMIN_PASSWORD=$ADMIN_PASSWORD
 services:
 - mongodb
 before_install:
-- export SECRET_KEY=$SECRET_KEY
-- export SMTP_PASSWORD=$SMTP_PASSWORD
-- export ADMIN_PASSWORD=$ADMIN_PASSWORD
 - node --version | grep -q 'v0.8' && npm install -g npm@3.3.12 || true
 node_js:
 - 5.4.1
