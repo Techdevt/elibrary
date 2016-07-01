@@ -1,5 +1,5 @@
 language: node_js
-sudo: false
+sudo: true
 env:
   matrix:
   - CXX=g++-4.8
@@ -13,6 +13,13 @@ services:
 - mongodb
 before_install:
 - node --version | grep -q 'v0.8' && npm install -g npm@3.3.12 || true
+# Setup a wildcard local DNS for *.eworm.com
+- sudo apt-get install -qq -y --force-yes dnsmasq
+- echo "listen-address=127.0.0.1" | sudo tee -a /etc/dnsmasq.conf > /dev/null
+- echo "bind-interfaces" | sudo tee -a /etc/dnsmasq.conf > /dev/null
+- echo "address=/.eworm.com/127.0.0.1" | sudo tee -a /etc/dnsmasq.conf > /dev/null
+- echo "user=root" | sudo tee -a /etc/dnsmasq.conf > /dev/null
+- sudo service dnsmasq restart
 node_js:
 - 5.4.1
 notifications:
