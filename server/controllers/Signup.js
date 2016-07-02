@@ -25,9 +25,11 @@ function _ensure(user, keys) {
     });
 }
 
-function _isCleanDomain(user) {
-	_fail("domain must be one word");
-}
+// function _isCleanDomain(user) {
+// 	const { domaine } = user;
+// 	if(domaine.split("")) 
+// 	_fail("domain must be one word");
+// }
 
 export function genVerificationToken(cb) {
     crypto.randomBytes(21, function(err, buf) {
