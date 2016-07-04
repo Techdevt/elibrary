@@ -1,11 +1,19 @@
 import express from 'express';
 import httpStatus from 'http-status';
-import { getDb }         from '../server/helpers/database';
+import { getDb } from '../server/helpers/database';
 
-let  router = express.Router();
+let router = express.Router();
 
-router.get('/dbconn', (req, res) => {
-    res.status(httpStatus.OK).send({database: getDb().name});
-});
+const getRoutes = (upload) => {
+    router.get('/dbconn', (req, res) => {
+        res.status(httpStatus.OK).send({ database: getDb().name });
+    });
 
-export default router;
+    router.post('/storage', upload.single('avatar'), (req, res) => {
+    	res.status(200).send(req.file);
+    });
+
+    return router;
+};
+
+export default getRoutes;

@@ -1,3 +1,17 @@
+
+add linting to tests
+do email sending
+do sms sending
+setup caching layer -> redis
+
+Slowdns for android
+
+vodafone x with tunnelguru on pc slow dns on android
+
+Tunnelguru for pc
+[9:05 AM, 7/4/2016] +233 54 158 4137: bi ebi dns trick
+[9:05 AM, 7/4/2016] +233 54 158 4137: Works with airtel
+
 * bake in page transitions
 * set up linting
 * write one test

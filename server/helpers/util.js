@@ -16,8 +16,8 @@ export function encrypt(str, cb) {
             callback(err);
         };
 
-        if(typeOf(str) !== "string") {
-        	throw new Error("Expected first argument to be a string");
+        if (typeOf(str) !== "string") {
+            throw new Error("Expected first argument to be a string");
         }
 
         bcrypt.genSalt(10, function(err, salt) {
@@ -26,9 +26,13 @@ export function encrypt(str, cb) {
             }
 
             bcrypt.hash(str, salt, function(err, hash) {
-            	if(err) return reject(err);
+                if (err) return reject(err);
                 return resolve(hash);
             });
         });
     });
+}
+
+export function sendMail() {
+    
 }

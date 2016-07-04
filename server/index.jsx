@@ -23,17 +23,16 @@ import createStore               from 'common/store/create';
 import { trigger }               from 'redial';
 import Html                      from 'lib/Html';
 import { initDb, getDb }         from './helpers/database';
+import AWS                       from 'aws-sdk';
+import multer                    from 'multer';
+import multerS3                  from 'multer-s3';
+import { getS3Instance }         from './helpers/storage';
 
 const app = express();
+const S3Client = getS3Instance();
  
 if (process.env.NODE_ENV !== 'production') {
   require('../webpack.dev').default(app);
-
-  // //development::enable chai immutable
-  // let chai = require('chai');
-  // let chaiImmutable = require('chai-immutable');
-
-  // chai.use(chaiImmutable);
 }
 
 let MongoStore = sessionStore(session);
@@ -93,8 +92,25 @@ app.use(session({
     }
   }));
 
+let storage = multerS3({
+    s3: S3Client,
+    bucket: 'eworm',
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
+  },
+    key: function (req, file, cb) {
+      cb(null, (Math.random().toString(36) + '00000000000000000').slice(2, 10) + Date.now() + path.extname(file.originalname))
+    }
+});
+
+let limits = {
+    fieldSize: 52428800
+};
+
+const upload = multer({ storage: storage, limits: limits });
+
 //initialize router
-router(app);
+router(app, upload);
 
 app.use((req, res) => {
   function getLoggedUser() {

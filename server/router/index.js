@@ -2,15 +2,15 @@
 import signup from './routes/signup';
 import books from './routes/books';
 
-export default (app) => {
+export default (app, upload) => {
     app.use('/signup', signup);
     app.use('/books', books);
 
     if(process.env.NODE_ENV !== "production") {
-    	_loadTestRoutes(app);
+    	_loadTestRoutes(app, upload);
     }
 };
 
-function _loadTestRoutes(app) {
-	app.use('/test', require('../../test/routes').default);
+function _loadTestRoutes(app, upload) {
+	app.use('/test', require('../../test/routes').default(upload));
 }

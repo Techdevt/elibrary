@@ -19,6 +19,7 @@
     "port": "3000",
     "dbBase": "mongodb://127.0.0.1",
     "dbName": "eworm",
+    "AWSRegion": "us-west-2",
     "smtp": {
         "from": {
             "name": "Unimart",

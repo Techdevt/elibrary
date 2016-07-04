@@ -12,7 +12,9 @@ try {
     secrets = {
         "smtp:password": process.env.SMTP_PASSWORD,
         "superAdmin:password": process.env.ADMIN_PASSWORD,
-        "app:secret": process.env.SECRET_KEY
+        "app:secret": process.env.SECRET_KEY,
+        "AWSAccessKey": process.env.AWS_ACCESS_KEY,
+        "AWSSecretKey": process.env.AWS_SECRET_KEY
     };
 }
 
