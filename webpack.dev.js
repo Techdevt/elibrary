@@ -39,7 +39,7 @@ export default function(app) {
             loaders: [{
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loaders: ['babel', 'eslint'],
                 query: BABEL_QUERY
             }, {
                 test: /\.scss$/,
