@@ -1,3 +1,3 @@
-import Account from './components';
+import Account from './components/Settings';
 
 export default Account;

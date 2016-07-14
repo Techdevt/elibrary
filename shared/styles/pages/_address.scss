@@ -33,7 +33,7 @@
         filter: none;
         z-index: 1;
         content: "";
-    }
+   }
 }
 
 .Address {
@@ -45,21 +45,21 @@
             margin-bottom: 14px;
             & > * {
                 display: block;
-            }
+           }
             .name {
                 font-size: 20px;
                 font-weight: $font-weight--semi-bold;
                 padding: 5px 0;
                 @extend %resetHeaders;
-            }
+           }
             .address,
             .state,
             .phone {
                 font-size: 14px;
-            }
+           }
             .shipBtn {
                 @extend %ship-btn;
-            }
+           }
             .edit-address {
                 .mdl-button {
                     margin-right: 10px;
@@ -67,19 +67,19 @@
                     text-transform: Capitalize;
                     &:hover {
                         background: $color-primary--contrast__active;
-                    }
+                   }
                     &:last-of-type {
                         margin-right: 0;
-                    }
-                }
-            }
-        }
+                   }
+               }
+           }
+       }
         .single-ad-after {
             .single-ad-after-inner {
                 @extend %line-bottom;
-            }
-        }
-    }
+           }
+       }
+   }
     .diffShip {
         padding: 20px;
         .header {
@@ -87,8 +87,8 @@
                 font-size: 20px;
                 font-weight: $font-weight--semi-bold;
                 @extend %resetHeaders;
-            }
-        }
+           }
+       }
         .ad-form {
         	position: relative;
             .form-control {
@@ -101,14 +101,14 @@
                         top: 14px;
                         &:after {
                             bottom: 10px;
-                        }
-                    }
-                }
-            }
+                       }
+                   }
+               }
+           }
             .altship {
             	@extend %ship-btn;
             	margin-left: 250px;
-            }
-        }
-    }
+           }
+       }
+   }
 }

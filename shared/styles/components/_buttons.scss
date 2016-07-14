@@ -5,12 +5,12 @@
     padding: 0 32px;
     &.cta {
         margin-top: 30px;
-    }
+   }
     &.inverse {
         opacity: 0.88;
         border-color: $white;
         color: $white;
-    }
+   }
 }
 
 .btn {
@@ -48,7 +48,7 @@
     transition: all 0.5s ease;
     @include media('<60rem') {
         font-size: 12px;
-    }
+   }
 }
 
 .book {

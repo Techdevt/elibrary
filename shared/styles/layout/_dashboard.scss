@@ -3,19 +3,19 @@
         margin-top: 64px;
         @include media('<=1024px') {
             margin-top: 56px;
-        }
-    }
+       }
+   }
     .mdl-layout__drawer {
-        .Dashboard & { 
+        .Dashboard & {
             background: #1E2124;
             border: none;
-        }
+       }
         #main & {
             background: $white;
             .mdl-navigation {
                 .mdl-navigation__link {
                     padding: 0;
-                }
+               }
                 margin-top: 3.5em;
                 li {
                     display: block;
@@ -38,15 +38,15 @@
                         &:focus, &:hover {
                             color: $color-accent;
                             outline: none;
-                        }
+                       }
                         &.active {
                             color: $color-accent;
                             border: none;
-                        }
-                    }
-                }
-            }
-        }
+                       }
+                   }
+               }
+           }
+       }
         position: fixed;
         .Drawer__Header {
             height: 128px;
@@ -67,20 +67,20 @@
                 position: absolute;
                 top: 20px;
                 left: 30px;
-            }
+           }
             .Drawer__Header_title {
                 position: absolute;
                 bottom: 2px;
                 left: 30px;
                 font-weight: 600;
                 text-overflow: ellipsis;
-            }
+           }
             .Drawer__Header_home {
                 position: absolute;
                 bottom: 0;
                 right: 5px;
-            }
-        }
+           }
+       }
         .mdl-navigation {
             padding-top: 4px;
             a {
@@ -91,21 +91,21 @@
                 &.active {
                     background: #282B30;
                     border-left: 3px solid $color-accent;
-                }
+               }
                 &:hover {
                     background: #282B30;
-                }
+               }
                 span {
                     font-weight: $font-weight--normal;
                     font-size: 14px;
                     color: $color-primary__contrast--active;
                     display: inline;
                     float: left;
-                }
+               }
                 .link-icon {
                     display: inline;
                     float: right;
-                }
+               }
                 .unread-count {
                     display: flex;
                     flex-direction: row;
@@ -123,8 +123,8 @@
                     color: rgb(255, 255, 255);
                     position: absolute;
                     right: 80px;
-                }
-            }
-        }
-    }
+               }
+           }
+       }
+   }
 }

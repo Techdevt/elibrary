@@ -6,8 +6,8 @@
         .container {
             padding-left: 15px;
             padding-right: 15px;
-        }
-    }
+       }
+   }
     z-index: 1000;
     background: #222222;
     min-height: 2.9375rem;
@@ -21,39 +21,39 @@
         line-height: 1.6em;
         .mdl-navigation__link {
             padding: 0;
-        }
+       }
         .mdl-menu {
             .mdl-menu__item {
                 width: 100%;
-            }
-        }
-    }
+           }
+       }
+   }
     .mdl-layout__drawer-button {
         @include media('<=850px') {
             z-index: 500;
             color: rgba(0, 0, 0, .5);
             margin-top: 5px;
-        }
+       }
         @include media('>850px') {
             display: none;
-        }
-    }
+       }
+   }
     .brand {
         display: inline-block;
         & > * {
             float: left;
-        }
+       }
         .icon-logo {
             width: 164px;
             height: 46px;
             margin-top: 10px;
-        }
+       }
         @include media('<=850px') {
             margin: 0 auto;
             display: block;
             width: 139px;
-        }
-    }
+       }
+   }
     nav.mdl-navigation {
         float: right;
         li {
@@ -85,14 +85,14 @@
                 &:hover,
                 &.active {
                     color: #D2232A;
-                }
-            }
+               }
+           }
             .md-button {
                 margin-top: 20px;
-            }
-        }
+           }
+       }
         @include media('<=850px') {
             display: none;
-        }
-    }
+       }
+   }
 }

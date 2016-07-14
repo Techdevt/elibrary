@@ -70,11 +70,11 @@
     @include typo-title();
     font-weight: 400;
     box-sizing: border-box;
-  }
+ }
 
   .mdl-layout-spacer {
     flex-grow: 1;
-  }
+ }
 
 
   // Drawer.
@@ -114,11 +114,11 @@
 
     &.is-visible {
       transform: translateX(0);
-    }
+   }
 
     & > * {
       flex-shrink: 0;
-    }
+   }
 
     & > .mdl-layout-title {
       line-height: $layout-desktop-header-height;
@@ -127,8 +127,8 @@
       @media screen and (max-width: $layout-screen-size-threshold) {
         line-height: $layout-mobile-header-height;
         padding-left: $layout-header-mobile-indent;
-      }
-    }
+     }
+   }
 
     & .mdl-navigation {
       flex-direction: column;
@@ -144,25 +144,25 @@
 
         @media screen and (max-width: $layout-screen-size-threshold) {
           padding: 16px $layout-header-mobile-indent;
-        }
+       }
 
         &:hover {
           background-color: $layout-nav-color;
-        }
+       }
 
         &--current {
             background-color: $layout-drawer-navigation-link-active-background;
             color: $layout-drawer-navigation-link-active-color;
-        }
-      }
-    }
+       }
+     }
+   }
 
     @media screen and (min-width: $layout-screen-size-threshold + 1px) {
       .mdl-layout--fixed-drawer > .mdl-layout__inner-container > & {
         transform: translateX(0);
-      }
-    }
-  }
+     }
+   }
+ }
 
 
   // Drawer button.
@@ -197,20 +197,20 @@
 
       @media screen and (max-width: $layout-screen-size-threshold) {
         margin: 4px;
-      }
-    }
+     }
+   }
 
     @media screen and (max-width: $layout-screen-size-threshold) {
       margin: 4px;
       color: rgba(0, 0, 0, 0.5);
-    }
+   }
 
     @media screen and (min-width: $layout-screen-size-threshold + 1px) {
       .mdl-layout--fixed-drawer > .mdl-layout__inner-container > & {
         display: none;
-      }
-    }
-  }
+     }
+   }
+ }
 
   .mdl-layout__header {
     display: flex;
@@ -237,20 +237,20 @@
 
     @media screen and (max-width: $layout-screen-size-threshold) {
       min-height: $layout-mobile-header-height;
-    }
+   }
 
     .mdl-layout--fixed-drawer:not(.is-small-screen) > .mdl-layout__inner-container > & {
       margin-left: $layout-drawer-width;
       width: calc(100% - #{$layout-drawer-width});
-    }
+   }
 
     @media screen and (min-width: $layout-screen-size-threshold) {
       .mdl-layout--fixed-drawer > .mdl-layout__inner-container > & {
         .mdl-layout__header-row {
           padding-left: 40px;
-        }
-      }
-    }
+       }
+     }
+   }
 
     & > .mdl-layout-icon {
       position: absolute;
@@ -265,52 +265,52 @@
       @media screen and (max-width: $layout-screen-size-threshold) {
         left: $layout-header-mobile-indent;
         top: ($layout-mobile-header-height - $layout-header-icon-size) / 2;
-      }
-    }
+     }
+   }
 
     .mdl-layout.has-drawer & > .mdl-layout-icon {
       display: none;
-    }
+   }
 
     &.is-compact {
       max-height: $layout-desktop-header-height;
 
       @media screen and (max-width: $layout-screen-size-threshold) {
         max-height: $layout-mobile-header-height;
-      }
-    }
+     }
+   }
 
     &.is-compact.has-tabs {
       height: $layout-desktop-header-height + $layout-tab-bar-height;
 
       @media screen and (max-width: $layout-screen-size-threshold) {
         min-height: $layout-mobile-header-height + $layout-tab-bar-height;
-      }
-    }
+     }
+   }
 
     @media screen and (max-width: $layout-screen-size-threshold) {
       & {
         display: none;
-      }
+     }
 
       .mdl-layout--fixed-header > .mdl-layout__inner-container > & {
         display: flex;
-      }
-    }
-  }
+     }
+   }
+ }
 
     .mdl-layout__header--transparent.mdl-layout__header--transparent {
       background-color: transparent;
       box-shadow: none;
-    }
+   }
 
     .mdl-layout__header--seamed {
       box-shadow: none;
-    }
+   }
 
     .mdl-layout__header--scroll {
       box-shadow: none;
-    }
+   }
 
     .mdl-layout__header--waterfall {
       box-shadow: none;
@@ -318,8 +318,8 @@
 
       &.is-casting-shadow {
         @include shadow-2dp();
-      }
-    }
+     }
+   }
 
     .mdl-layout__header-row {
       display: flex;
@@ -336,15 +336,15 @@
       @media screen and (max-width: $layout-screen-size-threshold) {
         height: $layout-header-mobile-row-height;
         padding: 0 $layout-header-mobile-indent 0 $layout-header-mobile-baseline;
-      }
+     }
 
       & > * {
         flex-shrink: 0;
-      }
+     }
 
       .mdl-layout__header--scroll & {
         width: 100%;
-      }
+     }
 
       & .mdl-navigation {
         margin: 0;
@@ -355,8 +355,8 @@
 
         @media screen and (max-width: $layout-screen-size-threshold) {
           height: $layout-header-mobile-row-height;
-        }
-      }
+       }
+     }
 
       & .mdl-navigation__link {
         display: block;
@@ -367,8 +367,8 @@
         @media screen and (max-width: $layout-screen-size-threshold) {
           line-height: $layout-header-mobile-row-height;
           padding: 0 $layout-header-mobile-indent;
-        }
-      }    }
+       }
+     }   }
 
   // Obfuscator.
   .mdl-layout__obfuscator {
@@ -386,8 +386,8 @@
     .mdl-layout__drawer.is-visible ~ & {
       background-color: rgba(0, 0, 0, 0.5);
       visibility: visible;
-    }
-  }
+   }
+ }
 
 
   // Content.
@@ -404,23 +404,23 @@
 
     .mdl-layout--fixed-drawer > .mdl-layout__inner-container > & {
       margin-left: $layout-drawer-width;
-    }
+   }
 
     .mdl-layout.has-scrolling-header & {
       overflow: visible;
-    }
+   }
 
     @media screen and (max-width: $layout-screen-size-threshold) {
       .mdl-layout--fixed-drawer > .mdl-layout__inner-container > & {
         margin-left: 0;
-      }
+     }
 
       .mdl-layout.has-scrolling-header & {
         overflow-y: auto;
         overflow-x: hidden;
-      }
-    }
-  }
+     }
+   }
+ }
 
   // Tabs.
   .mdl-layout__tab-bar {
@@ -437,21 +437,21 @@
 
     &::-webkit-scrollbar {
       display: none;
-    }
+   }
 
     @media screen and (max-width: $layout-screen-size-threshold) {
       width: calc(100% -
           #{($layout-header-mobile-baseline - $layout-tab-mobile-padding)});
       padding: 0 0 0
           ($layout-header-mobile-baseline - $layout-tab-mobile-padding);
-    }
+   }
 
     .mdl-layout--fixed-tabs & {
       padding: 0;
       overflow: hidden;
       width: 100%;
-    }
-  }
+   }
+ }
 
   .mdl-layout__tab-bar-container {
     position: relative;
@@ -468,8 +468,8 @@
       position: absolute;
       top: 0;
       left: 0;
-    }
-  }
+   }
+ }
 
   .mdl-layout__tab-bar-button {
     display: inline-block;
@@ -487,28 +487,28 @@
     @media screen and (max-width: $layout-screen-size-threshold) {
       display: none;
       width: $layout-header-mobile-baseline - $layout-tab-mobile-padding;
-    }
+   }
 
     .mdl-layout--fixed-tabs & {
       display: none;
-    }
+   }
 
     & .material-icons {
       line-height: $layout-tab-bar-height;
-    }
+   }
 
     &.is-active {
       color: $layout-header-text-color;
-    }
-  }
+   }
+ }
 
   .mdl-layout__tab-bar-left-button {
     left: 0;
-  }
+ }
 
   .mdl-layout__tab-bar-right-button {
     right: 0;
-  }
+ }
 
   .mdl-layout__tab {
     margin: 0;
@@ -535,17 +535,17 @@
 
     @media screen and (max-width: $layout-screen-size-threshold) {
       padding: 0 $layout-tab-mobile-padding 0 $layout-tab-mobile-padding;
-    }
+   }
 
     .mdl-layout--fixed-tabs & {
       float: none;
       flex-grow: 1;
       padding: 0;
-    }
+   }
 
     .mdl-layout.is-upgraded &.is-active {
       color: $layout-header-text-color;
-    }
+   }
 
     .mdl-layout.is-upgraded &.is-active::after {
       height: $layout-tab-highlight-thickness;
@@ -558,7 +558,7 @@
       background: $layout-header-tab-highlight;
       animation: border-expand 0.2s cubic-bezier(0.4, 0.0, 0.4, 1) 0.01s alternate forwards;
       transition: all 1s cubic-bezier(0.4, 0.0, 1, 1);
-    }
+   }
 
     & .mdl-layout__tab-ripple-container {
       display: block;
@@ -572,18 +572,18 @@
 
       & .mdl-ripple {
         background-color: $layout-header-text-color;
-      }
-    }
-  }
+     }
+   }
+ }
 
   .mdl-layout__tab-panel {
     display: block;
 
     .mdl-layout.is-upgraded & {
       display: none;
-    }
+   }
 
     .mdl-layout.is-upgraded &.is-active {
       display: block;
-    }
-  }
+   }
+ }

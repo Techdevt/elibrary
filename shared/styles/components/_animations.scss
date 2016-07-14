@@ -1,21 +1,21 @@
  @keyframes opacity_change {
     0% {
         opacity: 0;
-    }
+   }
     100% {
         opacity: 1;
-    }
+   }
 }
 
 @-webkit-keyframes load_trans_card_a {
     0% {
         -webkit-transform: translate3d(-50px, 0, 0);
         opacity: 0
-    }
+   }
     100% {
         -webkit-transform: translate3d(0, 0, 0);
         opacity: 1
-    }
+   }
 }
 
 @keyframes load_trans_card_a {
@@ -24,24 +24,24 @@
         -ms-transform: translate3d(-50px, 0, 0);
         transform: translate3d(-50px, 0, 0);
         opacity: 0
-    }
+   }
     100% {
         -webkit-transform: translate3d(0, 0, 0);
         -ms-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         opacity: 1
-    }
+   }
 }
 
 @-webkit-keyframes load_trans_card_b {
     0% {
         -webkit-transform: translate3d(50px, 0, 0);
         opacity: 0
-    }
+   }
     100% {
         -webkit-transform: translate3d(0, 0, 0);
         opacity: 1
-    }
+   }
 }
 
 @keyframes load_trans_card_b {
@@ -50,24 +50,24 @@
         -ms-transform: translate3d(50px, 0, 0);
         transform: translate3d(50px, 0, 0);
         opacity: 0
-    }
+   }
     100% {
         -webkit-transform: translate3d(0, 0, 0);
         -ms-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         opacity: 1
-    }
+   }
 }
 
 @-webkit-keyframes card-fade-up {
     0% {
         opacity: 0;
         -webkit-transform: translatey(20px)
-    }
+   }
     100% {
         opacity: 1;
         -webkit-transform: translatey(0)
-    }
+   }
 }
 
 @keyframes card-fade-up {
@@ -76,28 +76,28 @@
         -webkit-transform: translatey(20px);
         -ms-transform: translatey(20px);
         transform: translatey(20px)
-    }
+   }
     100% {
         opacity: 1;
         -webkit-transform: translatey(0);
         -ms-transform: translatey(0);
         transform: translatey(0)
-    }
+   }
 }
 
 @-webkit-keyframes pulse_card {
     0% {
         -webkit-transform: scale(1);
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.1)
-    }
+   }
     50% {
         -webkit-transform: scale(1.015);
         box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15)
-    }
+   }
     100% {
         -webkit-transform: scale(1);
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.1)
-    }
+   }
 }
 
 @keyframes pulse_card {
@@ -106,19 +106,19 @@
         -ms-transform: scale(1);
         transform: scale(1);
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.1)
-    }
+   }
     50% {
         -webkit-transform: scale(1.015);
         -ms-transform: scale(1.015);
         transform: scale(1.015);
         box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15)
-    }
+   }
     100% {
         -webkit-transform: scale(1);
         -ms-transform: scale(1);
         transform: scale(1);
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.1)
-    }
+   }
 }
 
 .shuffle-animation.ng-enter,
@@ -157,10 +157,10 @@
 @-webkit-keyframes slide-in-nav {
     0% {
         -webkit-transform: translateY(0)
-    }
+   }
     100% {
         -webkit-transform: translateY(28px)
-    }
+   }
 }
 
 @keyframes slide-in-nav {
@@ -168,21 +168,21 @@
         -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
         transform: translateY(0)
-    }
+   }
     100% {
         -webkit-transform: translateY(28px);
         -ms-transform: translateY(28px);
         transform: translateY(28px)
-    }
+   }
 }
 
 @-webkit-keyframes slide-in-hero {
     0% {
         -webkit-transform: translateY(-29px)
-    }
+   }
     100% {
         -webkit-transform: translateY(0)
-    }
+   }
 }
 
 @keyframes slide-in-hero {
@@ -190,10 +190,10 @@
         -webkit-transform: translateY(-29px);
         -ms-transform: translateY(-29px);
         transform: translateY(-29px)
-    }
+   }
     100% {
         -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
         transform: translateY(0)
-    }
+   }
 }

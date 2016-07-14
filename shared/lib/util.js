@@ -1,4 +1,3 @@
-
 export function slugify(name) {
   return name.trim().toLowerCase().replace(/[ \n!@#$%^&*():"'|?=]/g, '-');
 }

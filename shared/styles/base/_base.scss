@@ -16,7 +16,7 @@ body {
     @include media('>80rem') {
         font-size: 1rem;
         line-height: 1.6;
-    }
+   }
 }
 
 html,
@@ -129,7 +129,7 @@ input[type='reset'] {
         @include text($size: px2em(12px), $lheight: (34px / 12px));
         height: px2em(38px, 12px);
         padding: 0 px2em(26px, 12px);
-    }
+   }
 }
 
 button:last-child,
@@ -173,14 +173,14 @@ h4 {
     @include media('>60rem') {
         font-size: 1.8rem;
         font-weight: 300;
-    }
+   }
 }
 
 h5 {
     @include text(px2em(16px));
     @include media('>60rem') {
         font-size: 1.4rem;
-    }
+   }
 }
 
 h6 {
@@ -200,7 +200,7 @@ a {
     &:visited,
     &:hover {
         color: $link-color--visited;
-    }
+   }
 }
 
 small {

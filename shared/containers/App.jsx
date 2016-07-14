@@ -1,118 +1,195 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import NotificationComponent from 'common/components/NotificationComponent';
 import classNames from 'classnames';
 import AppLayout from 'containers/AppLayout';
-import Footer        from 'common/components/Footer';
+import Footer from 'common/components/Footer';
+import debug from 'debug';
+import DevTools from 'common/middleware/DevTools';
+import { initEnvironment } from 'common/actions/App';
 
-if(process.env.BROWSER) {
+if (process.env.BROWSER) {
+  /* eslint global-require: "off" */
   require('react-mdl/extra/material');
-  //in production change to cdn files
+  // in production change to cdn files
   require('material-design-icons/iconfont/material-icons.css');
-  //require('react-mdl/extra/material.css');
+  // require('react-mdl/extra/material.css');
   require('styles/mdl-styles/material-design-lite.scss');
-  //material-design selectbox
-  //require('getmdl-select/getmdl-select.min');
-  //require('getmdl-select/getmdl-select.min.css');
+  // material-design selectbox
+  // require('getmdl-select/getmdl-select.min');
+  // require('getmdl-select/getmdl-select.min.css');
 
-  //require('react-select/dist/react-select.css');
-  //require('quill/dist/quill.snow.css');
+  // require('react-select/dist/react-select.css');
+  // require('quill/dist/quill.snow.css');
 
-  //toastr
-  //react datepicker
-  //require('react-datepicker/dist/react-datepicker.css');
+  // toastr
+  // react datepicker
+  // require('react-datepicker/dist/react-datepicker.css');
 
-  //application styles
-	require('styles/main.scss');
+  // application styles
+  require('styles/main.scss');
+  window.debug = debug('app:error');
+  window.log = debug('app:log');
 }
 
 class AppView extends Component {
+  static propTypes = {
+    routes: PropTypes.array,
+    user: PropTypes.object,
+    menu: PropTypes.object,
+    environment: PropTypes.object.isRequired,
+    dispatch: PropTypes.func,
+    Account: PropTypes.object,
+    children: PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       active: false,
       message: '',
       dismissTimeout: 3000,
-      label: 'ok'
+      label: 'ok',
     };
   }
-  
-  getNotificationStyles = () => {
-    let bar = {
-      background: '#263238',
-      zIndex: '10000000000000'
-    };
-    let noteDimensions = {width: 0};
-    let note, active;
 
-    if(process.env.BROWSER) {
+  componentDidMount() {
+    this.onMount();
+  }
+
+  onMount = () => {
+    const { dispatch } = this.props;
+    this.setState({ isMounted: true });
+    dispatch(initEnvironment());
+  };
+
+  getNotificationStyles = () => {
+    const bar = {
+      background: '#263238',
+      zIndex: '10000000000000',
+    };
+    let noteDimensions = { width: 0 };
+    let note;
+    let active;
+
+    if (process.env.BROWSER) {
       note = document.querySelector('.notification-bar');
-      if(note) {
+      if (note) {
         noteDimensions = note.getBoundingClientRect();
       }
       active = {
-          left: (Math.floor(window.innerWidth - noteDimensions.width ) / 2) + 'px'
+        left: `${(Math.floor(window.innerWidth - noteDimensions.width) / 2)}px`,
       };
     }
 
-    let action = {
-      color: '#FFCCBC'
+    const action = {
+      color: '#FFCCBC',
     };
 
     return { bar, active, action };
   };
 
-  notify = (message, action, dismissTimeout, label = "ok") => {
-      this.setState({
-        active: true,
-        message: message,
-        dismissTimeout: dismissTimeout,
-        label: label,
-        nAction: action
-      });
+  notify = (message, action, dismissTimeout, label = 'ok') => {
+    this.setState({
+      active: true,
+      message,
+      dismissTimeout,
+      label,
+      nAction: action,
+    });
   };
 
   action = () => {
-      const { nAction } = this.state;
-      this.setState({
-        active: false
-      });
-      if(typeof nAction === "function") {
-        nAction();
-      }
+    const { nAction } = this.state;
+    this.setState({
+      active: false,
+    });
+    if (typeof nAction === 'function') {
+      nAction();
+    }
   };
 
   render() {
-  	//this is where basic structure shud live
-    const { user, menu, dispatch, Account } = this.props;
-    const { message, dismissTimeout, label, active } = this.state;
-    const currentRoute =  this.props.routes[this.props.routes.length-1];
-    
-    return (
-      <div id="app-view" className={classNames({[`${currentRoute.name}page`]: true})}>
-        <Helmet title={`${currentRoute.name} - Eworm` } />
-        {
+    // this is where basic structure shud live
+    const { user, menu, dispatch, Account, environment } = this.props;
+    const { screenHeight, isMobile, screenWidth } = environment;
+    const { message, dismissTimeout, label, active, isMounted } = this.state;
+    const currentRoute = this.props.routes[this.props.routes.length - 1];
+
+    if (isMobile) {
+      return (
+        <div
+          style={{ height: `${screenHeight}px`, width: `${screenWidth}px` }}
+          id="app-view"
+          className={classNames({ [`${currentRoute.name}page`]: true })}
+        >
+          <Helmet title={`${currentRoute.name} - Eworm`} />
+          {isMounted && <DevTools />}
+          {
             active &&
-            <NotificationComponent 
-            message={ message }
-            active={ active }
-            styles={ this.getNotificationStyles() } 
-            label={ label }
-            dismissTimeout={ dismissTimeout }
-            action={ this.action }/>
-        }
-        <AppLayout user={user} notify={this.notify} menu={menu} dispatch={dispatch} Account={Account}>
+              <NotificationComponent
+                message={message}
+                active={active}
+                styles={this.getNotificationStyles()}
+                label={label}
+                dismissTimeout={dismissTimeout}
+                action={this.action}
+              />
+          }
+          <AppLayout
+            user={user}
+            notify={this.notify}
+            menu={menu}
+            dispatch={dispatch}
+            Account={Account}
+          >
           {
             React.cloneElement(this.props.children, {
               notify: this.notify,
               user,
               menu,
               dispatch,
-              Account
+              Account,
             })
           }
+          </AppLayout>
+          <Footer />
+        </div>
+      );
+    }
+
+    return (
+      <div id="app-view" className={classNames({ [`${currentRoute.name}page`]: true })}>
+        <Helmet title={`${currentRoute.name} - Eworm`} />
+         {isMounted && <DevTools />}
+        {
+          active &&
+            <NotificationComponent
+              message={message}
+              active={active}
+              styles={this.getNotificationStyles()}
+              label={label}
+              dismissTimeout={dismissTimeout}
+              action={this.action}
+            />
+        }
+        <AppLayout
+          user={user}
+          notify={this.notify}
+          menu={menu}
+          dispatch={dispatch}
+          Account={Account}
+        >
+        {
+          React.cloneElement(this.props.children, {
+            notify: this.notify,
+            user,
+            menu,
+            dispatch,
+            Account,
+          })
+        }
         </AppLayout>
         <Footer />
       </div>
@@ -121,9 +198,10 @@ class AppView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-   user: state.Account.toJSON().user,
-   menu: state.Menu.toJSON(),
-   Account: state.Account
+  user: state.Account.toJSON().user,
+  menu: state.Menu.toJSON(),
+  environment: state.Environment.toJSON(),
+  Account: state.Account,
 });
 
 export default connect(mapStateToProps)(AppView);

@@ -6,7 +6,7 @@
     margin-top: 20%;
     .mdl-spinner__layer {
         border-color: #f3f3f3;
-    }
+   }
 }
 
 .sticky-subnav {
@@ -29,8 +29,8 @@
             margin-top: 0!important;
             margin-bottom: 0!important;
             float: none !important;
-        }
-    }
+       }
+   }
     .sticky-subnav-list {
         margin-bottom: 0;
         text-align: center;
@@ -49,13 +49,13 @@
                 &.active {
                     color: $color-primary;
                     font-weight: $font-weight--bold;
-                }
-            }
+               }
+           }
             &:last-child {
                 margin-right: 0;
-            }
-        }
-    }
+           }
+       }
+   }
     html.sticky & {
         border-top: none;
         position: fixed;
@@ -63,13 +63,13 @@
         z-index: 98;
         @include media('<=767px') {
             top: 52px;
-        }
+       }
         @include media('>767px') {
             -webkit-animation: slide-in-nav 300ms forwards;
             animation: slide-in-nav 300ms forwards;
             top: 29px;
-        }
-    }
+       }
+   }
 }
 
 .Editor__TextField .image-attachment {
@@ -91,7 +91,7 @@
     border-bottom: 0.0625rem solid #e5e5e5;
     .menu-heading {
         margin-top: 50px;
-    }
+   }
     .menu-list {
         @extend %clearfix;
         list-style: none;
@@ -106,7 +106,7 @@
             width: 33.33%;
             @include media('>60rem') {
                 width: 14.2%;
-            }
+           }
             a {
                 display: block;
                 padding: 2.25rem 0rem;
@@ -121,8 +121,8 @@
                     transition: all 0.5s ease;
                     span {
                         padding-top: 10px;
-                    }
-                }
+                   }
+               }
                 i {
                     background: #373737;
                     color: #FFFFFF;
@@ -137,15 +137,15 @@
                     -moz-transition: all 0.5s ease;
                     transition: all 0.5s ease;
                     height: 2.75rem;
-                }
+               }
                 &:hover {
                     i {
                         background: $color-accent;
-                    }
-                }
-            }
-        }
-    }
+                   }
+               }
+           }
+       }
+   }
 }
 
 .searchbox {
@@ -154,30 +154,30 @@
         border-radius: 5px;
         background: $white;
         border: 2px solid $divider-color;
-    }
+   }
     .mdl-textfield.is-focused .mdl-textfield__expandable-holder {
         width: 400px;
         @include media('<60rem') {
             width: 200px;
-        }
-    }
+       }
+   }
     .mdl-textfield__input {
         color: $text-color--secondary;
-    }
+   }
     .mdl-textfield.is-focused .mdl-textfield__input {
         padding-left: 10px;
-    }
+   }
     .mdl-textfield__label {
         &:after {
             background-color: $divider-color;
-        }
-    }
+       }
+   }
 }
 
 .hide-small {
     @include media('<=60rem') {
         display: none;
-    }
+   }
 }
 
 .visit {

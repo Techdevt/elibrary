@@ -1,170 +1,198 @@
 import React, { PropTypes, Component } from 'react';
-import ReactDOM from 'react-dom';
-import {Cell, IconButton, Button, Header, Layout, Content, Icon, Grid, Tooltip } from 'react-mdl';
-import User from 'components/DashBarUser';
-import Confirm from 'components/Confirm';
-import { connect } from 'react-redux';
-import AuthenticatedComponent from 'components/AuthenticatedComponent';
-import AutosizeInput from 'react-input-autosize';
-import Address from 'components/Address';
-import async from 'async';
+import { Cell, IconButton, Button, Grid, Tooltip } from 'react-mdl';
+import authenticatedComponent from 'common/components/AuthenticatedComponent';
+import Address from './Address';
 import TransitionGroup from 'react-addons-transition-group';
 import editContact from '../actions';
 import _ from 'lodash';
 
 class ContactDetails extends Component {
-	static self = this;
-	constructor(props) {
-		super(props);
-		const { user } = this.props;
-		this.state = {
-			addresses: user.address,
-			$dirty: false
-		};
-		this.addresses = user.address;
-	}
+  static propTypes = {
+    registerHook: PropTypes.func,
+    checkDirtyBeforeUnmount: PropTypes.func,
+    revertAddress: PropTypes.func,
+    notify: PropTypes.func,
+    cleanAuthMessage: PropTypes.func,
+    user: PropTypes.object,
+    handleAddressEdit: PropTypes.func,
+    dispatch: PropTypes.func,
+    handleAddressEditToggle: PropTypes.func,
+    toggleAddressActive: PropTypes.func,
+  };
 
-	componentWillReceiveProps(nextProps) {
-		const { registerHook, checkDirtyBeforeUnmount, revertAddress, notify, cleanAuthMessage } = this.props;
-		if(nextProps.message) {
-			notify(nextProps.message, cleanAuthMessage, 5000, 'Ok');
-		}
-		this.setState({
-			addresses: nextProps.user.address,
-			$dirty: this.checkChanged(nextProps)
-		});
-		
-		registerHook(checkDirtyBeforeUnmount.bind(this, this.state.$dirty, null, revertAddress.bind(this, this.addresses)));
-	}
+  constructor(props) {
+    super(props);
+    const { user } = this.props;
+    this.state = {
+      addresses: user.address,
+      $dirty: false,
+    };
+    this.addresses = user.address;
+  }
 
-	checkChanged(nextProps) {
-		_.mixin({
-	  		deepEquals: function(ar1, ar2) {
-		    var still_matches, _fail,
-		      _this = this;
-		    if (!((_.isArray(ar1) && _.isArray(ar2)) || (_.isObject(ar1) && _.isObject(ar2)))) {
-		      return false;
-		    }
-		    if (ar1.length !== ar2.length) {
-		      return false;
-		    }
-		    still_matches = true;
-		    _fail = function() {
-		      still_matches = false;
-		    };
-		    _.each(ar1, function(prop1, n) {
-		      var prop2;
-		      prop2 = ar2[n];
+  componentWillReceiveProps(nextProps) {
+    const {
+      registerHook,
+      checkDirtyBeforeUnmount,
+      revertAddress,
+      notify,
+      cleanAuthMessage,
+    } = this.props;
+    if (nextProps.message) {
+      notify(nextProps.message, cleanAuthMessage, 5000, 'Ok');
+    }
+    this.setState({
+      addresses: nextProps.user.address,
+      $dirty: this.checkChanged(nextProps),
+    });
 
-		      if (prop1 !== prop2 && ( n !== 'isActive' && n !== 'editable') && !_.deepEquals(prop1, prop2)) {
-		        _fail();
-		      }
-		    });
-		    return still_matches;
-		  }
-		});
+    registerHook(checkDirtyBeforeUnmount(this.state.$dirty, null, revertAddress(this.addresses)));
+  }
 
-		if(!_.deepEquals(nextProps.user.address, this.addresses)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+  onFieldChange = (index, evt) => {
+    this.props.handleAddressEdit(index, evt.target.name, evt.target.value);
+  };
 
-	onFieldChange = (index, evt) => {
-		this.props.handleAddressEdit(index, evt.target.name, evt.target.value);
-	};
+  checkChanged(obj1, obj2) {
+    _.mixin({
+      deepEquals: (ar1, ar2) => {
+        let stillMatches;
+        const fail = () => {
+          stillMatches = false;
+        };
+        if (!((_.isArray(ar1) && _.isArray(ar2)) || (_.isObject(ar1) && _.isObject(ar2)))) {
+          return false;
+        }
+        if (ar1.length !== ar2.length) {
+          return false;
+        }
+        stillMatches = true;
+        _.each(ar1, (prop1, n) => {
+          const prop2 = ar2[n];
+          if (prop1 !== prop2 && (n !== '$dirty' && n !== 'modalIsOpen')
+            && !_.deepEquals(prop1, prop2)) {
+            fail();
+          }
+        });
+        return stillMatches;
+      },
+    });
 
-	handleSubmit = () => {
-		if(!this.state.$dirty) return;
+    if (!_.deepEquals(obj1, obj2)) {
+      return true;
+    }
+    return false;
+  }
 
-		const { addresses } = this.state;
-		const { dispatch } = this.props;
-		
-		let formData = new FormData();
-		formData.append("address", JSON.stringify(addresses));
+  handleSubmit = () => {
+    if (!this.state.$dirty) return;
 
-		dispatch(editContact(formData));
-		this.setState({
-			$dirty: false
-		});
-		this.addresses = addresses;
-		//reregister hooks
-	};
+    const { addresses } = this.state;
+    const { dispatch } = this.props;
 
-	toggleAddressEdit = (index, state) => {
-		const { handleAddressEditToggle } = this.props;
-		handleAddressEditToggle(index, state);
-	};
-	
-	handleAddressDelete = (index, evt) => {
-		this.setState({
-			address: [
-						...this.state.address.slice(0, index),
-						...this.state.address.slice(index + 1)
-					]
-		});
-	};
+    const formData = new FormData();
+    formData.append('address', JSON.stringify(addresses));
 
-	render() {
-		const { addresses } = this.state;
-		const { toggleAddressActive, handleAddressEditToggle, handleAddressEdit } = this.props;
+    dispatch(editContact(formData));
+    this.setState({
+      $dirty: false,
+    });
+    this.addresses = addresses;
+    // reregister hooks
+  };
 
-		return (
-			<div>
-			{
-				<div className="DashContent__inner">
-		    		<Cell className="Settings__main" col={10} phone={4} tablet={8}>
-		    			<h2 className="dash_title">Contact Information</h2>
-	    				{
-	    					addresses.map((address, index) => {
-	    						return (
-	    							<div className="Address-container" key={index}>
-	    								<div className="Header">
-	    									<h3>Addresses</h3>
-	    									<IconButton onClick={() => {}} name="add" className="add_address-btn" />
-	    								</div>
-	    								<Grid className="compact">
-	    									<Cell col={10}  className="title">
-	    										<span>{`${address.fullName}, ${address.addressLine1}`}</span>
-	    									</Cell>
-	    									<Cell col={2} className="actions">
-	    										<Tooltip label={!address.isActive ? "Show Address": "Hide Address"} position="top">
-	    											<IconButton 
-	    												name={!address.isActive ? "keyboard_arrow_down": "keyboard_arrow_up"}
-	    												onClick={toggleAddressActive.bind(this, index, !address.isActive)}  />
-	    										</Tooltip>
-	    										{
-	    											address.isActive &&
-	    											<Tooltip label={!address.editable ? "Edit Address": "Done Editing Address"} position="top">
-		    											<IconButton name="edit" onClick={handleAddressEditToggle.bind(this, index, !address.editable)}/>
-		    										</Tooltip>
-	    										}
-	    									</Cell>
-	    								</Grid>
-	    								<TransitionGroup component="div">
-	    									{
-	    										address.isActive &&
-	    										<Address editable={true}
-				    							key={index}
-				    							address={address}
-				    							editable={address.editable}
-				    							handleAddressEdit={this.toggleAddressEdit.bind(this, index, !address.editable)}
-				    							handleAddressDelete={this.handleAddressDelete.bind(this, index)}
-				    							onFieldChange={this.onFieldChange.bind(this, index)} />
-	    									}
-	    								</TransitionGroup>
-	    							</div>
-	    						);
-	    					})
-	    				}
-		    			<Button raised accent className="Settings__action-btn" disabled={!this.state.$dirty} onClick={this.handleSubmit}>Update Contact</Button>
-		    		</Cell>
-		    	</div>
-			}
-		</div>	
-		);
-	}
+  toggleAddressEdit = (index, state) => {
+    const { handleAddressEditToggle } = this.props;
+    handleAddressEditToggle(index, state);
+  };
+
+  handleAddressDelete = (index) => {
+    this.setState({
+      address: [
+        ...this.state.address.slice(0, index),
+        ...this.state.address.slice(index + 1),
+      ],
+    });
+  };
+
+  render() {
+    const { addresses } = this.state;
+    const { toggleAddressActive, handleAddressEditToggle } = this.props;
+
+    return (
+      <div>
+      {
+        <div className="DashContent__inner">
+          <Cell className="Settings__main" col={10} phone={4} tablet={8}>
+            <h2 className="dash_title">Contact Information</h2>
+            {
+              addresses.map((address, index) => (
+                <div className="Address-container" key={index}>
+                  <div className="Header">
+                    <h3>Addresses</h3>
+                    <IconButton name="add" className="add_address-btn" />
+                  </div>
+                  <Grid className="compact">
+                    <Cell col={10} className="title">
+                      <span>{`${address.fullName}, ${address.addressLine1}`}</span>
+                    </Cell>
+                    <Cell col={2} className="actions">
+                      <Tooltip
+                        label={!address.isActive ? 'Show Address' : 'Hide Address'}
+                        position="top"
+                      >
+                        <IconButton
+                          name={!address.isActive ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
+                          onClick={toggleAddressActive(index, !address.isActive)}
+                        />
+                      </Tooltip>
+                      {
+                        address.isActive &&
+                          <Tooltip
+                            label={!address.editable ? 'Edit Address' : 'Done Editing Address'}
+                            position="top"
+                          >
+                            <IconButton
+                              name="edit"
+                              onClick={handleAddressEditToggle(index, !address.editable)}
+                            />
+                          </Tooltip>
+                      }
+                    </Cell>
+                  </Grid>
+                  <TransitionGroup component="div">
+                  {
+                    address.isActive &&
+                      <Address
+                        editable
+                        key={index}
+                        address={address}
+                        editable={address.editable}
+                        handleAddressEdit={this.toggleAddressEdit(index, !address.editable)}
+                        handleAddressDelete={this.handleAddressDelete(index)}
+                        onFieldChange={this.onFieldChange(index)}
+                      />
+                  }
+                  </TransitionGroup>
+                </div>
+              )
+            )
+          }
+            <Button
+              raised
+              accent
+              className="Settings__action-btn"
+              disabled={!this.state.$dirty}
+              onClick={this.handleSubmit}
+            >
+                Update Contact
+            </Button>
+          </Cell>
+        </div>
+      }
+      </div>
+    );
+  }
 }
 
-export default AuthenticatedComponent(ContactDetails);
+export default authenticatedComponent(ContactDetails);

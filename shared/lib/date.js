@@ -5,5 +5,5 @@ export function displayDate(intDate) {
 }
 
 export function currentDate() {
-  return parseInt(moment().format('YYYYMMDD'));
+  return parseInt(moment().format('YYYYMMDD'), 10);
 }

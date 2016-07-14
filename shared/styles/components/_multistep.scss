@@ -14,13 +14,13 @@ ol.progtrckr {
 
         @include media('>1400px') {
             font-size: 14px;
-        }
+       }
 
         &.progtrckr-doing,
         &.progtrckr-done {
             color: black;
             border-bottom: 4px solid $color-accent;
-        }
+       }
         &.progtrckr-done {
             &:before {
                 content: "\2713";
@@ -29,8 +29,8 @@ ol.progtrckr {
                 width: 1.2em;
                 line-height: 1.2em;
                 border-radius: 1.2em;
-            }
-        }
+           }
+       }
         &.progtrckr-doing {
             &:before {
                 content: "\2022";
@@ -39,8 +39,8 @@ ol.progtrckr {
                 width: 1.2em;
                 line-height: 1.2em;
                 border-radius: 1.2em;
-            }
-        }
+           }
+       }
         &.progtrckr-todo {
         	color: $color-primary--contrast__active;
     		border-bottom: 4px solid $color-primary--contrast__active;
@@ -51,30 +51,30 @@ ol.progtrckr {
 			    width: 1.2em;
 			    line-height: 1.4em;
         	}
-        }
+       }
         &:before {
             position: relative;
             bottom: -4.2rem;
             float: left;
             left: 50%;
-        }
+       }
         &:after {
             content: "\00a0\00a0";
-        }
+       }
         
         em {
             display: none;
             font-weight: 700;
             padding-left: 1rem;
-        }
+       }
         span {
             padding: 0;
             @include media('>=740px', '<=1024px') {
                 padding: 0 0.2rem;
-            }
+           }
             @include media('>1024px') {
                 padding: 0 1.5rem;
-            }
-        }
-    }
+           }
+       }
+   }
 }

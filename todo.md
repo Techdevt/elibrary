@@ -1,8 +1,15 @@
-
-add linting to tests
+make travis build from new project branch
+transitions
+code igniter
 do email sending
 do sms sending
+do types of blog posts
+add all to gnaas
+redo gallery page rendering
+search engine optimization
+
 setup caching layer -> redis
+setup cloudfront - also for apfs2017 domain => done => finish cname setup
 
 Slowdns for android
 

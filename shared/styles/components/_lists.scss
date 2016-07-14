@@ -12,9 +12,9 @@
                 position: absolute;
                 right: 100px;
                 top: 30px;
-            }
-        }
-    }
+           }
+       }
+   }
 
     .List__container {
     	padding: 40px;
@@ -38,9 +38,9 @@
                     color: $text-color--secondary;
                     text-rendering: optimizeLegibility;
                     margin-left: 10px;
-                }
-            }
-        }
+               }
+           }
+       }
  		.List__Item {
  			position: relative;
  			padding: 5px;
@@ -76,7 +76,7 @@
                         padding-left: 12px;
                         margin-right: 5px;
                         transition: all .2s ease;
-                    }
+                   }
  				}
                 
  				.List__Item_name, .List__Item_email {
@@ -92,8 +92,8 @@
                                 font-size: 15px;
                                 border: none;
                                 text-rendering: optimizeLegibility;
-                            }
-                    }
+                           }
+                   }
  				}
 
  				.List__Item_active {
@@ -106,10 +106,10 @@
 					    border-radius: 5px;
 					    &.active {
 					    	background: lighten(green, 10%);
-					    }
+					   }
 					    &.inactive{
 					    	background: lighten(yellow, 10%);
-					    }
+					   }
  					}
  				}
  				& > * {
@@ -128,15 +128,15 @@
                             margin-right: 10px;
                             &:last-child {
                                 padding-right: 0;
-                            }
-                        }
+                           }
+                       }
 
                         .mdl-button {
                             color: $text-color--secondary;
-                        }
-                    }	
+                       }
+                   }	
  				}
  			}
  		}
-    }
+   }
 }

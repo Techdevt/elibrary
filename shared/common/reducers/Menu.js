@@ -3,7 +3,7 @@ import Immutable from 'immutable';
 const defaultState = Immutable.Map({
   isActive: false,
   caption: '',
-  links: []
+  links: [],
 });
 
 const MenuReducer = (state = defaultState, action) => {

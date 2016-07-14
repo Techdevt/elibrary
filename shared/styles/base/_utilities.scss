@@ -28,11 +28,11 @@ $el-h: null) {
             width: $el-w;
             height: $el-h;
             @content;
-        }
+       }
         @else {
             @warn "'#{$el} not a valid pseudo property'";
-        }
-    }
+       }
+   }
 }
 
 //set the context width for the grid

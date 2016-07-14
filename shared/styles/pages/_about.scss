@@ -6,19 +6,19 @@
         h1.heading,
         p {
             color: $white;
-        }
+       }
         .hero-welcome {
             @extend %hero-img;
-        }
-    }
+       }
+   }
     .section-content {
         transition: all .1s ease-in;
-    }
+   }
     html.sticky & {
         .about-main {
             
-        }
-    }
+       }
+   }
 }
 
 
@@ -29,7 +29,7 @@
     padding: 40px 0;
     @include media('<=740px') {
         padding: 20px 0;
-    }
+   }
     .sidenav {
         display: block;
         width: 25%;
@@ -40,45 +40,45 @@
             width: 100%;
             float: none;
             padding-top: 0;
-        }
+       }
         &.is-expanded {
             .dac-visible-mobile-block {
                 .dac-toggle-expand {
                     display: none;
-                }
+               }
                 .dac-toggle-collapse {
                     display: inline-block;
-                }
-            }
+               }
+           }
             .main-nav {
                 max-height: none;
-            }
-        }
+           }
+       }
         .dac-visible-mobile-block {
             display: none;
             @include media('<=740px') {
                 display: block !important;
-            }
+           }
             .dac-toggle-expand {
                 cursor: pointer;
                 display: inline-block;
-            }
+           }
             .dac-toggle-collapse {
                 cursor: pointer;
                 display: none;
-            }
+           }
             .dac-devdoc-toggle {
                 cursor: pointer;
                 background: #fafafa;
                 margin-left: 35%;
                 padding: 4px 10px;
-            }
-        }
+           }
+       }
         .main-nav {
             @include media('<=740px') {
                 width: 100%;
                 max-height: 0;
-            }
+           }
             clear: left;
             overflow: hidden;
             -webkit-transition: .3s max-height;
@@ -94,30 +94,30 @@
                 transition: color .1s ease-in, background .1s ease-in, border .1s ease-in;
                 &:hover {
                     text-decoration: none;
-                }
+               }
                 &.active {
                     background: $alabaster;
                     width: auto;
                     font-weight: $font-weight--bold;
                     border-left: 2px solid #d3d3d3;
-                }
+               }
                 @include media('<=880px') {
                     font-size: 14px;
-                }
+               }
                 @include media('>740px') {
                     max-width: 150px;
-                }
-            }
-        }
-    }
+               }
+           }
+       }
+   }
     svg.logo-icon {
         fill: $color-primary;
         width: 48px;
         height: 48px;
         &:hover {
             fill: darken($color-primary, 5%);
-        }
-    }
+       }
+   }
     .about-main,
     .media-main {
         height: auto;
@@ -127,8 +127,8 @@
         @include media('<=740px') {
             width: 100%;
             float: none;
-        }
-    }
+       }
+   }
 }
 
 section.page-container {
@@ -139,11 +139,11 @@ section.page-container {
             overflow: hidden;
             -webkit-transition: right 0.5s ease, left 0.5s ease;
             transition: right 0.5s ease, left 0.5s ease
-        }
+       }
         div.about-main {
             z-index: 1;
-        }
-    }
+       }
+   }
 }
 
 .ipsf {
@@ -153,15 +153,15 @@ section.page-container {
         border-bottom: none;
         .section-content {
             text-align: left !important;
-        }
-    }
+       }
+   }
 }
 
 .text-body {
     p {
         @include text(px2em(16px), 1.5, 400, $color-primary__contrast);
         margin-bottom: 30px;
-    }
+   }
 }
 
 .list-table {
@@ -185,7 +185,7 @@ section.page-container {
                     margin-bottom: 0;
                     line-height: 1.2;
                     color: #7b8b8e;
-                }
+               }
                 strong {
                     font-weight: 500;
                     color: #576366;
@@ -195,13 +195,13 @@ section.page-container {
                     //white-space: nowrap;
                     display: block;
                     line-height: 1.2;
-                }
+               }
                 icon {
                     float: left;
                     margin: -7px 0 -7px -65px;
-                }
-            }
-        }
-    }
+               }
+           }
+       }
+   }
 }
 */
