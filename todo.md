@@ -7,6 +7,15 @@ add all to gnaas
 redo gallery page rendering
 search engine optimization
 
+ebook
+elibary
+estudy
+readwide
+readeasy
+easyread
+easypdf
+epdf
+
 setup caching layer -> redis
 setup cloudfront - also for apfs2017 domain => done => finish cname setup
 
