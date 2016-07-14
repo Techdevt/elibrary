@@ -1,4 +1,3 @@
-make travis build from new project branch
 transitions
 code igniter
 do email sending
