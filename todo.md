@@ -7,6 +7,15 @@ add all to gnaas
 redo gallery page rendering
 search engine optimization
 
+ebook
+elibary
+estudy
+readwide
+readeasy
+easyread
+easypdf
+epdf
+
 setup caching layer -> redis
 setup cloudfront - also for apfs2017 domain => done => finish cname setup
 
@@ -18,12 +27,6 @@ Tunnelguru for pc
 [9:05 AM, 7/4/2016] +233 54 158 4137: bi ebi dns trick
 [9:05 AM, 7/4/2016] +233 54 158 4137: Works with airtel
 
-* bake in page transitions
-* set up linting
-* write one test
-* make it work
-* setup travis ci(continuous integration)
-* set up code coverage
 * open sans
 * test page without javascript
 * make sure webpack builds the minimum file size
