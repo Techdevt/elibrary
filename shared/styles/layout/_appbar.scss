@@ -1,6 +1,8 @@
 .header {
     @extend %clearfix;
-    position: fixed;
+    position: absolute;
+    top: 0;
+    height: 65px;
     .Blogpage & {
         position: relative;
         .container {

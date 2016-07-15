@@ -8,6 +8,8 @@ import Footer from 'common/components/Footer';
 import debug from 'debug';
 import DevTools from 'common/middleware/DevTools';
 import { initEnvironment } from 'common/actions/App';
+import { RouteTransition } from 'react-router-transition';
+import * as presets from 'lib/transitions';
 
 if (process.env.BROWSER) {
   /* eslint global-require: "off" */
@@ -42,6 +44,7 @@ class AppView extends Component {
     dispatch: PropTypes.func,
     Account: PropTypes.object,
     children: PropTypes.object,
+    location: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -90,6 +93,17 @@ class AppView extends Component {
     return { bar, active, action };
   };
 
+  getTransition = () => {
+    const { location: { state } } = this.props;
+    let transition;
+    if (state && state.hasOwnProperty('transition')) {
+      transition = presets[state.transition];
+    } else {
+      transition = presets.noTransition;
+    }
+    return transition;
+  };
+
   notify = (message, action, dismissTimeout, label = 'ok') => {
     this.setState({
       active: true,
@@ -116,6 +130,7 @@ class AppView extends Component {
     const { screenHeight, isMobile, screenWidth } = environment;
     const { message, dismissTimeout, label, active, isMounted } = this.state;
     const currentRoute = this.props.routes[this.props.routes.length - 1];
+    const transition = this.getTransition();
 
     if (isMobile) {
       return (
@@ -181,15 +196,20 @@ class AppView extends Component {
           dispatch={dispatch}
           Account={Account}
         >
-        {
-          React.cloneElement(this.props.children, {
-            notify: this.notify,
-            user,
-            menu,
-            dispatch,
-            Account,
-          })
-        }
+          <RouteTransition
+            pathname={this.props.location.pathname}
+            {...transition}
+          >
+          {
+            React.cloneElement(this.props.children, {
+              notify: this.notify,
+              user,
+              menu,
+              dispatch,
+              Account,
+            })
+          }
+          </RouteTransition>
         </AppLayout>
         <Footer />
       </div>

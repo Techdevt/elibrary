@@ -41,9 +41,13 @@ export default class MainLayout extends Component {
     dispatch(logout());
   };
 
-  goToUrl = (path) => {
+  goToUrl = (path, query, state) => {
     const { router } = this.context;
-    router.push(path);
+    router.push({
+      pathname: path,
+      query,
+      state,
+    });
   };
 
   toggleDrawer = () => {
@@ -57,11 +61,7 @@ export default class MainLayout extends Component {
 
     return (
       <Layout
-        fixedHeader
         style={{
-          minHeight: '100%',
-          height: 'auto',
-          position: 'relative',
           marginBottom: '-165px',
         }}
         id="main"
@@ -93,7 +93,8 @@ export default class MainLayout extends Component {
                     <IconButton
                       id="demo-menu-lower-right"
                       name="account_circle"
-                      onClick={() => this.goToUrl('/login')}
+                      onClick={() =>
+                        this.goToUrl('/login', {}, { transition: 'slideLeftTransition' })}
                     />
                   </div>
               }
@@ -125,13 +126,11 @@ export default class MainLayout extends Component {
                 />
             }
           </TransitionGroup>
-          <div >
           {
             this.props.children && React.cloneElement(this.props.children, {
               notify,
             })
           }
-          </div>
         </div>
       </Layout>
     );
